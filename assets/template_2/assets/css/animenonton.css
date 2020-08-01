@@ -1,0 +1,412 @@
+.slidtop {
+    overflow: hidden;
+}
+
+.loop {
+    margin: 20px;
+    margin-bottom: 0;
+    margin-right: 0;
+    width: 73%!important;
+    float: left;
+}
+.owl-nav {
+    display: none;
+}
+.owl-dots {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    text-align: center;
+}
+.slide-item {
+    height: 280px;
+}
+.slide-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background: #222;
+    overflow: hidden;
+}
+.slide-bg img {
+    min-height: 100%;
+    min-width: 704px;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+}
+.slide-shadow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: rgba(0,0,0,.7);
+}
+.slide-shadow {
+    background-image: url(https://i0.wp.com/animenonton.tv/wp-content/themes/animenonton/assets/images/pattern.png)!important;
+    background-color: rgba(0,0,0,.5)!important;
+}
+
+.slide-item.full .slide-content {
+    padding: 39px 70px;
+}
+.slide-item.full .slide-content {
+    padding: 30px 50px!important;
+}
+.slide-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 39px 20px;
+    text-align: left;
+    font-family: "Open Sans",arial,helvetica,sans-serif;
+}
+.slide-content {
+    font-family: heebo!important;
+    font-size: 13px;
+}
+.slide-item.full .slide-content .poster {
+    width: 22%!important;
+}
+.slide-content .poster {
+    float: right;
+    width: 19%;
+    margin-left: 20px;
+}
+.slide-content .info-left {
+    margin-top: 18px;
+    padding-left: 2px;
+    font-family: "Open Sans",arial,helvetica,sans-serif;
+}
+.title {
+    display: block;
+    font-size: 21px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.slide-content .rating {
+    display: inline-block;
+    height: 48px;
+    float: left;
+    margin-top: -4px;
+    margin-left: -9px;
+}
+.slide-content .title a {
+    color: #fff;
+}
+.slide-content .rating .site-vote span:before {
+    margin: 0;
+}
+
+
+.slide-content .rating .site-vote {
+    font-size: 48px;
+    color: #f3d872;
+    position: relative;
+    float: left;
+    margin-right: 8px;
+}
+
+
+
+.slide-content .rating .site-vote span span {
+    font-size: 15px;
+    position: absolute;
+    font-family: 'Droid Sans',sans-serif;
+    left: 12px;
+    top: 17px;
+    color: #0a0a0a;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+.slide-content .rating .site-vote span span {
+    top: 30px!important;
+    left: 0!important;
+    width: 51px;
+    text-align: center;
+    font-size: 13px!important;
+}
+.slide-content .rating .site-vote span span {
+    font-family: roboto!important;
+    font-weight: 500!important;
+}
+.slide-content .ellipsis {
+    max-width: 55%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    float: left;
+    line-height: 26px;
+    margin-top: -3px;
+}
+.slide-content .ellipsis {
+    float: none!important;
+    display: block!important;
+}
+.slide-content .title .release-year {
+    font-size: 13px!important;
+    color: #FFC107!important;
+    margin: 0!important;
+}
+.slide-content .extras {
+    margin-top: 5px!important;
+}
+.slide-content .extras div {
+    color: #DDD!important;
+}
+.slide-content .extra-category {
+    display: inline-block;
+    margin-right: 10px;
+    max-width: 30%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    float: left;
+    line-height: 20px;
+    margin-top: -4px;
+}
+.slide-content .excerpt {
+    display: block;
+    margin-top: 30px;
+}
+.slide-content .excerpt {
+    max-height: 60px;
+    overflow: hidden;
+}
+.slide-content .excerpt .title {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 6px;
+    font-weight: 700;
+    color: #ccc;
+}
+.slide-content .title {
+    display: block;
+    font-size: 21px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.slide-content .excerpt p {
+    line-height: 19px;
+    color: #ddd;
+    margin: 0;
+}
+
+.slide-content .cast {
+    display: block;
+    margin-top: 10px;
+}
+.slide-content .cast span {
+    display: block;
+    margin-right: 10px;
+    margin-bottom: 7px;
+    width: 70%;
+    line-height: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #ddd;
+    overflow: hidden;
+}
+.slide-content .cast strong {
+    color: unset!important;
+    font-weight: 400!important;
+}
+.slide-content .cast span {
+    display: block;
+    margin-right: 10px;
+    margin-bottom: 7px;
+    width: 70%;
+    line-height: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #ddd;
+    overflow: hidden;
+}
+.owl-carousel .owl-item .slide-content img {
+    width: auto;
+    box-shadow: 0px 3px 2px rgba(0,0,0,.3);
+    border-radius: 3px;
+}
+.slide-content .poster img {
+    max-width: 100%;
+    height: auto;
+}
+.owl-carousel .owl-item img {
+    transform-style: preserve-3d;
+}
+.owl-carousel .owl-item img {
+    display: block;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+}
+.slidtop .trending {
+    overflow: hidden;
+    margin-top: 20px;
+}
+.slidtop .trending .tdb {
+    cursor: pointer;
+    height: 280px;
+    margin-left: 10px;
+    position: relative;
+}
+.slidtop .trending .tdb .crown {
+    background-image: url(https://i0.wp.com/animenonton.tv/wp-content/themes/animenonton/assets/images/crown.png);
+    background-size: 100%;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    height: 40px;
+    width: 40px;
+    z-index: 3;
+}
+.slidtop .trending .tdb .textbg.blxc {
+    color: #eee;
+    background: url(https://i0.wp.com/animenonton.tv/wp-content/themes/animenonton/assets/images/black.png);
+}
+.slidtop .trending .tdb .textbg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: opacity .2s;
+    z-index: 2;
+    box-shadow: inset 0 0 40px #000;
+}
+.slidtop .trending .tdb .textbg .bghover {
+    margin-top: 40%;
+    padding: 0 5%;
+    line-height: 19px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.slidtop .trending .tdb .textbg .bghover .numa {
+    display: block;
+    font-size: 16px;
+}
+.slidtop .trending .tdb .textbg .bghover .numb {
+    display: block;
+    font-size: 17px;
+    margin-top: 5px;
+    height: 55px;
+    overflow: hidden;
+}
+.slidtop .trending .tdb .imgxa {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-size: auto 100%;
+    background-position: top center;
+}
+.slidtop .trending .tdb .imgxa .imgxb {
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.slide-content a {
+    color: #ddd;
+}
+.slide-content .extras div {
+    display: inline-block;
+    margin-right: 10px;
+}
+.slide-content .extras {
+    display: block;
+    margin-top: 10px;
+}
+
+.owl-carousel {
+    display: none;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.owl-dot span {
+    padding: 6px;
+    background: rgba(255,255,255,.24);
+    margin: 1px 3px;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px rgba(0,0,0,.6), inset 0px 1px 1px rgba(0,0,0,.52);
+    
+}
+.owl-dot.active span,
+.owl-dot.active:hover span {
+	background: #FFD400!important
+}
+.owl-carousel.normal .owl-dots {
+	position: absolute;
+	bottom: -15px;
+	right: 0;
+	left: 0;
+	text-align: center
+}
+.owl-dot {
+	display: inline-block
+}
+.owl-dot.active span,
+.owl-dot.active:hover span {
+	background: rgba(243, 216, 114, .54)
+}
+.owl-dot:hover span {
+	background: rgba(255, 255, 255, .54)
+}
+.owl-carousel .owl-controls .owl-nav .owl-prev,
+.owl-carousel .owl-controls .owl-nav .owl-next,
+.owl-carousel .owl-controls .owl-dot {
+	cursor: pointer;
+	cursor: hand;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none
+}
+
+.owl-item.active.center .slide-item {
+	padding: 0;
+	-webkit-filter: grayscale(0%);
+	filter: grayscale(0%)
+}
+
+.owl-item.active.center {
+	z-index: 3
+}
+
+.owl-item.active.center .slide-content {
+	visibility: visible
+}
+
+.owl-item.active.center .slide-bg {
+	background: #666;
+	-webkit-filter: blur(20px);
+	-moz-filter: blur(20px);
+	-o-filter: blur(20px);
+	-ms-filter: blur(20px);
+	filter: blur(20px)
+}
+
+.owl-item.active.center .slide-shadow {
+	box-shadow: inset -300px 40px 200px 0px rgba(0, 0, 0, .75), 0px 0px 15px 5px rgba(0, 0, 0, .8);
+	background-color: rgba(0, 0, 0, .7)
+}
+.owl-item.active .slide-bg {
+	background: #222
+}
+
+

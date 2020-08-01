@@ -1,0 +1,443 @@
+
+.left-content{
+    float: left;
+    width: 71.5%;
+    margin-right: 1%;
+    margin-left: 20px;
+}
+.postbody {
+    margin-top: 20px;
+}
+.dark {
+    border-color: #1a1920;
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,.30);
+    background: #37383a;
+}
+.purple{
+    border-color: #1a1920;
+    box-shadow: 0 0px 20px 0 rgb(218 118 243);
+    background: #631cec;
+}
+.pink{
+    border-color: #1a1920;
+    box-shadow: 0 0px 20px 0 rgb(125, 53, 240);
+    background: #2d0869;
+}
+.dark .widget-title {
+    border-color: #ecebef;
+}
+
+.widget-title {
+    font-weight: 700;
+    overflow: hidden;
+    padding-bottom: 1px;
+    padding-top: 26px;
+    border-bottom: 2px solid #f1f1f1;
+    margin-right: 11px;
+    margin-left: 11px;
+}
+.recomendation-column{
+    padding-top:  0px;
+    margin-bottom: 28px;
+    
+}
+/* .recomendation-column h2{
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: normal;
+    font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+    vertical-align: top;
+} */
+
+.widget-title h2 {
+    padding-left: 15px;
+    font-weight: bold;
+    font-size: 24px;
+    color: #fff;
+    overflow: hidden;
+    margin-right: 15px;
+    float: left;
+}
+.post-show {
+    padding: 5px;
+    padding-top: 17px;
+    padding-left: 11px;
+    padding-right: 11px;
+}
+.listupd {
+    overflow: hidden;
+}
+.post-show .animepost {
+    width: 20%;
+}
+.animepost {
+    float: left;
+}
+.animepost .animposx {
+    position: relative;
+    overflow: hidden;
+    margin: 7px;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+}
+
+.post-show .animepost .animposx .limit {
+    padding: 137% 0 0;
+}
+.animepost .animposx .limit {
+    padding: 137% 0 0;
+    position: relative;
+    background: #f1f1f1;
+    overflow: hidden;
+}
+
+.animepost .animposx .limit .ply {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+    top: 0;
+    background: rgba(0,0,0,.51);
+}
+.animepost .animposx .limit .ply i {
+    color: #ced5dce0;
+    font-size: 32px;
+    top: 44%;
+    position: absolute;
+    left: 44%;
+}
+
+.animepost .animposx .limit .type {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    z-index: 1;
+    padding: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 3px;
+    color: #fff;
+    background: #29b6f6;
+}
+.TV {
+    background: #1686df;
+}
+.post-show .animepost .animposx .limit img {
+    height: auto;
+}
+.animepost .animposx .limit img {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+}
+.bigors {
+    height: 75px;
+}
+.dark .animepost .animposx .tt {
+    color: #ccc;
+}
+.animepost .animposx .tt {
+    font-size: 13px;
+    margin: 8px 0;
+    margin-bottom: 5px;
+    font-weight: 500;
+    line-height: 19px;
+    text-align: left;
+    color: #333;
+}
+.animepost .animposx .tt h4 {
+    font-weight: 500;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+a.newepss .sttyp {
+    color: #62a6ea;
+    margin-bottom: 8px;
+}
+.sttyp {
+    font-size: 12px;
+}
+.animepost .animposx .adds {
+    font-size: 13px;
+    color: #666;
+}
+.animepost .animposx .adds .rating {
+    overflow: hidden;
+    font-size: 12px;
+    margin-top: 5px;
+}
+.animepost .animposx .adds .rating .rtg {
+    float: left;
+}
+
+.archiveanime-rating-bar {
+    position: relative;
+    overflow: hidden;
+    height: 14px;
+    color: #f1c40f;
+    outline: none;
+    font-family: ElegantIcons;
+    font-weight: 400;
+    line-height: 1;
+    font-size: 13px;
+    width: auto;
+}
+.archiveanime-rating-bar span {
+    overflow: hidden!important;
+    float: left;
+    top: 0;
+    line-height: 13px!important;
+    left: 0;
+    position: absolute;
+    padding-top: 18px;
+}
+.dark .animepost .animposx .adds .rating i {
+    color: #999;
+}
+.archiveanime-rating-content {
+    width: 69px;
+}
+
+.linkupdate {
+    background: #24232e!important;
+    padding: 9px;
+    color: #dedef1;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+}
+.linkupdate-genre {
+    background: #903aef!important;
+    color: #dedef1;
+    padding: 9px;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+}
+.linkupdate-genre:hover {
+    color: #fff;
+    box-shadow: 0 0 16px rgb(249 253 249);
+}
+.linkupdate-pink {
+    background: #53348f!important;
+    color: #dedef1;
+    padding: 9px;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+}
+.linkupdate-pink:hover {
+    color: #fff;
+}
+.linkupdate:hover {
+    color: #fff;
+    box-shadow: 0 0 16px rgb(29 237 237);
+}
+
+.rigt-content{
+    float: left;
+    width: 24%;
+}
+#sidebar {
+    margin-top: 20px;
+}
+#sidebar .senc .widgets {
+    border-color: #1a1920;
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,.30);
+    background: #37383a;
+}
+
+
+
+#sidebar .senc .sencs {
+    border-color: #1a1920;
+}
+
+#sidebar .senc .sencs {
+    margin-bottom: 15px;
+    line-height: 21px;
+    font-size: 13px;
+    color: #fff;
+    
+}
+#sidebar .senc .sencs h3 {
+    border-color: #24232e;
+}
+#sidebar .senc .sencs h3 {
+    font-weight: 700;
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+#sidebar .senc .sencs h3.widget-title {
+    padding-left: 10px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    width: 91%;
+}
+
+#sidebar .senc .sencs ul li {
+    overflow: hidden;
+}
+.serieslist ul li .ctr {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    background: #a414ef;
+    line-height: 25px;
+    font-size: 1em;
+    color: #ccc;
+    border: 0px solid #947ea9;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    z-index: 3;
+}
+.serieslist.pop ul li {
+    padding-left: 55px;
+}
+.serieslist ul li .imgseries {
+    float: left;
+    overflow: hidden;
+    width: 59px;
+    height: 83px;
+    background: #ddd;
+    margin-right: 10px;
+}
+#sidebar .senc .sencs a {
+    color: #999;
+}
+.serieslist ul li .imgseries img {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    margin-bottom: 0;
+    margin-right: 0;
+    float: none;
+}
+.serieslist ul li .leftseries {
+    overflow: hidden;
+    text-overflow: unset;
+    white-space: unset;
+}
+.serieslist ul li .leftseries h4 a {
+    color: #ccc!important;
+    font-size: 14px;
+}
+.serieslist ul li .leftseries span {
+    color: #888;
+}
+
+.serieslist ul li .leftseries span {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 12px;
+}
+.width20{
+    min-width: 20%;
+}
+
+footer {
+    clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: -200px;
+    border-top: 1px solid #e5e5e5;
+    background: #2e3035;
+}
+
+#footer .footermenu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+#footer .footermenu ul li {
+    padding: 10px;
+    overflow: hidden;
+    display: inline-flex;
+}
+
+#footer .footermenu ul li a {
+    color: #fff;
+}
+.footer-last {
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+.scm .logo-footer {
+    overflow: hidden;
+}
+.scm .logo-footer a {
+    padding: 0;
+}
+.scm a, .info .shrsm a {
+    display: inline-block;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+    font-weight: 600;
+    border-radius: 4px;
+}
+.scm .logo-footer img {
+    width: 156px;
+}
+#footer .footer-desc {
+    line-height: 25px;
+    width: 100%;
+}
+.dark #footer .footer-desc p {
+    color: #ccc;
+}
+#footer .footer-desc p, #footer .footer-desc h1 {
+    font-size: 14px;
+    color: #333;
+}
+.dark .copyright_east {
+    background: #1f1e26;
+    border-color: #1f1e26;
+}
+.copyright_east {
+    background: #2e3035;
+    box-shadow: 0 0px 20px 0 rgb(31, 23, 43);
+    padding: 12px;
+    text-align: center;
+    border-top: 1px solid #2e3035;
+}
+
+.dark .copyright_east p {
+    color: #ccc;
+}
+
+.recomended-body{
+    padding-bottom: 4%;
+}

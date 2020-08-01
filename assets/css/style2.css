@@ -1,0 +1,14 @@
+.roundedd-2 {
+    border-radius: 25px !important;
+  }
+  .card-3:hover {
+    box-shadow: 0 3px 12px 0 rgb(64, 107, 248) !important;
+  }
+  .font-footer-card{
+    text-align: center;
+    margin-top: 7%;
+    color: white;
+    font-weight: bold;
+    font-size: inherit;
+  }
+  
