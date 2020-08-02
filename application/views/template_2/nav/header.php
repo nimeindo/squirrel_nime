@@ -71,6 +71,9 @@
 
     <!-- ads maven -->
     <script data-cfasync="false" src="//d10nkw6w2k1o10.cloudfront.net/?wwknd=889319"></script>
+
+    <!-- propelers -->
+    <meta name="propeller" content="2228ade9a10121fe734547f1959726d2">
     
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
