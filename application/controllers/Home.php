@@ -19,7 +19,7 @@ class Home extends CI_Controller {
 	// dev
 	public function index()
 	{	
-		$row = 10;
+		$row = ($this->agent->is_mobile()) ? 16 : 15;
 		$API_LastUpdateAnime = Home::LastUpdateAnime($row);
 		$API_LastUpdateManga = Home::LastUpdateManga($row);
 		$SearchGenreManga = Home::SearchGenreManga($row);
