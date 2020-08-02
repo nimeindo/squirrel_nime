@@ -107,15 +107,15 @@
           <div class="back-detail text-h4">
             <ul class="main-nav right-read d-flex flex-row justify-content-start text-h4 mb-0" id=accordionHeaderNav>
                 <li id=menu-item-29 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-29">
-                    <a href="index.html">Chapter</a>
+                    <a href="<?php echo site_url('manga-detail/des/'.$SlugDetail); ?>">Chapter</a>
                 </li>
                 <div class="vertical-line">
                 </div>
                 <li id=menu-item-29 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-29">
-                    <a href="index.html"><?php echo '0'.$ChapterNow ?></a>
+                    <a href="<?php echo site_url('manga-detail/des/'.$SlugDetail); ?>"><?php echo '0'.$ChapterNow ?></a>
                 </li>
             </ul>
-            <a class="title-manga" href="index.html"><?php echo substr(str_replace('-',' ',$SlugDetail),0,20).'...' ?></a>
+            <a class="title-manga" href="<?php echo site_url('manga-detail/des/'.$SlugDetail); ?>"><?php echo substr(str_replace('-',' ',$SlugDetail),0,20).'...' ?></a>
           </div>
           <div class="dropdown dropdownMenuChapter" >
                 <button class="btn btn-lis-chapt" type="button" id="dropdownMenuChapter-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
