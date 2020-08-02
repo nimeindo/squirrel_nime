@@ -68,6 +68,9 @@
     <script src=<?php echo base_url()."assets/template_2/assets/js/owl.carousel.min.js"?> ></script>
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- ads maven -->
+    <script data-cfasync="false" src="//d10nkw6w2k1o10.cloudfront.net/?wwknd=889319"></script>
     
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
