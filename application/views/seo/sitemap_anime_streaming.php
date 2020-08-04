@@ -3,9 +3,9 @@
 header('Content-type: application/xml; charset="ISO-8859-1"',true);  
 {// last update
   $TotalSearchPageHome = 0;
-  if($API_LastUpdate->API_TheMovieRs->Status == "Not Complete"){ 
+  if($API_LastUpdateAnime->API_TheMovieRs->Status == "Not Complete"){ 
   }else{
-    $TotalSearchPageHome = $API_LastUpdate->API_TheMovieRs->Body->TotalSearchPage;
+    $TotalSearchPageHome = $API_LastUpdateAnime->API_TheMovieRs->Body->TotalSearchPage;
   }
 }
 ?>
@@ -14,7 +14,7 @@ header('Content-type: application/xml; charset="ISO-8859-1"',true);
     xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" 
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" 
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <?php if($API_LastUpdate->API_TheMovieRs->Status == "Not Complete"){ ?>
+    <?php if($API_LastUpdateAnime->API_TheMovieRs->Status == "Not Complete"){ ?>
         <url>	
             <loc><?php echo base_url();?></loc>
             <lastmod><?php echo date('Y-m-d\TH:i:s').'+00:00'?></lastmod>
@@ -24,12 +24,12 @@ header('Content-type: application/xml; charset="ISO-8859-1"',true);
             <loc><?php echo base_url();?></loc>
             <lastmod><?php echo date('Y-m-d\TH:i:s').'+00:00'?></lastmod>
         </url>
-        <?php foreach($API_LastUpdate->API_TheMovieRs->Body->LastUpdateAnime as $API_TheMovieRS){ ?>
+        <?php foreach($API_LastUpdateAnime->API_TheMovieRs->Body->LastUpdateAnime as $API_TheMovieRS){ ?>
             <?php //$slug = $API_TheMovieRS->IdListEpisode.'-'.$API_TheMovieRS->SlugEp; ?>
             <?php $slug = $API_TheMovieRS->SlugEp; ?>
             <?php $publishDate = $API_TheMovieRS->PublishDate; ?>
             <url>
-                <loc><?php echo site_url('streaming/'.$slug); ?></loc>
+                <loc><?php echo site_url('anime-streaming/'.$slug); ?></loc>
                 <lastmod><?php echo date('Y-m-d\TH:i:s').'+00:00'?></lastmod>
             </url>
         <?php } ?>

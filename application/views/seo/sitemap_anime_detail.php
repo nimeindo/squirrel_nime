@@ -11,7 +11,7 @@ header('Content-type: application/xml; charset="ISO-8859-1"',true);
             <?php //$params = $ListSubIndex->IdDetailAnime.'-'.$ListSubIndex->SlugDetail;?>
             <?php $params = $ListSubIndex->SlugDetail;?>
             <url>	
-                <loc><?php echo base_url().'anime/'.$params;?></loc>
+                <loc><?php echo base_url().'anime-detail/des/'.$params;?></loc>
                 <lastmod><?php echo $ListSubIndex->PublishDate.'+00:00';?></lastmod>
             </url>
         <?php } ?>
