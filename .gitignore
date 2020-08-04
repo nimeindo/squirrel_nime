@@ -11,6 +11,7 @@ application/logs/*
 composer.lock
 .env
 .env.development
+.env.production
 index.php
 
 user_guide_src/build/*

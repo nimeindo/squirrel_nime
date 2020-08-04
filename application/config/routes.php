@@ -101,8 +101,16 @@ $route['manga/genre/search/(:any)'] = 'Manga/MangaSearchGenreController/searchGe
 $route['manga/genre/search/(:any)/pages/(:any)'] = 'Manga/MangaSearchGenreController/Pages/$1/$2';
 
 
-$route['web/sitemap-anime-(:any)\.xml'] = "Seo/SiteMap/sitemapDetailAnime/$1";
-$route['web/sitemap-pages-(:any)\.xml'] = "Seo/SiteMap/sitemapLastUpdate/$1";
-$route['web/sitemap-menu\.xml'] = "Seo/SiteMap/sitemapMenu/$1";
+
+$route['sitemap/anime\.xml'] = "Seo/SiteMap/anime";
+$route['sitemap/anime/anime-pages-(:any)\.xml'] = "Seo/SiteMap/AnimePage/$1";
+$route['sitemap/anime/list-anime-(:any)\.xml'] = "Seo/SiteMap/ListAnime/$1";
+
+$route['sitemap/manga\.xml'] = "Seo/SiteMap/manga";
+$route['sitemap/manga/manga-pages-(:any)\.xml'] = "Seo/SiteMap/MangaPage/$1";
+$route['sitemap/manga/list-manga-(:any)\.xml'] = "Seo/SiteMap/ListManga/$1";
+
+$route['sitemap/sitemap-menu\.xml'] = "Seo/SiteMap/sitemapMenu/$1";
 $route['web/sitemap\.xml'] = "Seo/SiteMap/sitemap";
 
+ 
