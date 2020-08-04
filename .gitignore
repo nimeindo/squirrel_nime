@@ -12,7 +12,7 @@ composer.lock
 .env
 .env.development
 .env.production
-index.php
+!index.php
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
