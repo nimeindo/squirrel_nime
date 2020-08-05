@@ -29,6 +29,8 @@ class Home extends CI_Controller {
 		$TopManga = Home::TopManga(5);
 		$TopAnime = Home::TopAnime(5);
 		$SliderAnime = Home::SliderAnime(5);
+		$SliderManga = Home::SliderManga(5);
+		
 		
 		$trendingKeyword = '';
 		$tagsKeyword ='';
@@ -43,6 +45,7 @@ class Home extends CI_Controller {
 		$PTR_API['API_TopManga'] = $TopManga;
 		$PTR_API['API_TopAnime'] = $TopAnime;
 		$PTR_API['API_SliderAnime'] = $SliderAnime;
+		$PTR_API['API_SliderManga'] = $SliderManga;
 		$PTR_API['RefreshPage'] = TRUE;
 		$PTR_API['SeoStructurData'] = $structurDataSeo;
 		
@@ -197,6 +200,21 @@ class Home extends CI_Controller {
 		$params = json_encode($params);
 		$API_TheMovieRs = $this->AnimeModel->SliderAnime($params);
 		return $API_TheMovieRs;
+	}
+
+	public function SliderManga($limitRange){
+		$LimitRowPegination = 2;
+		$params = [
+            'params' => [
+				'limit_range' => $limitRange,
+				'star_index' => '',
+				'is_updated' => TRUE
+            ]
+		];
+		
+		$params = json_encode($params);
+		$API_MangaRs = $this->MangaModel->SliderManga($params);
+		return $API_MangaRs;
 	}
 
 	public function containsDecimal( $value ) {
