@@ -33,7 +33,7 @@
                   <?php $slug = $SliderValueAs->SlugDetail; 
                      $ImageAsset = $SliderValueAs->ImageAsset; 
                   ?>
-                  <a href="<?php echo site_url('anime-detail/des/'.$slug); ?>">
+                  <a href="<?php echo site_url('manga-detail/des/'.$slug); ?>">
                      <div class="img" data-slide-imgid="0"><img src="<?php echo base_url()."assets/template_2/assets/img/header_anime/".$ImageAsset; ?>" alt="<?php echo $SliderValueAs->Title; ?>"></div>
                   </a>
                <?php }?>
