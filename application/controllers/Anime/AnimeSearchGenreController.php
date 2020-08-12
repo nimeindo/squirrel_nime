@@ -11,6 +11,7 @@ class AnimeSearchGenreController extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->model('AnimeModel');
 		$this->load->library('user_agent');
+		$this->load->helper('date');
 		$this->load->library('../controllers/Seo/SructurData');
 		$this->load->library('../controllers/Helpers/HelpersController');
 		// header('Cache-Control: no-cache,must-revalidate,max-age=0');
@@ -26,7 +27,7 @@ class AnimeSearchGenreController extends CI_Controller {
 			$starIndex = 0;
 			$searchKey = str_replace('-', ' ', $KeywordGenre);
 			$SearchGenreAnime = AnimeSearchGenreController::SearchGenreAnime($searchKey, $starIndex, 20, $LimitRowPegination);
-			$StructurDataSeo = AnimeSearchGenreController::StructurDataSeo();
+			$StructurDataSeo = AnimeSearchGenreController::StructurDataSeo($searchKey);
 			$PTR_API['TrendingKeyword'] = $trendingKeyword;
 			$PTR_API['TagsKeyword'] = $tagsKeyword;
 			$PTR_API['API_SearchGenreAnime'] = $SearchGenreAnime;
@@ -52,7 +53,7 @@ class AnimeSearchGenreController extends CI_Controller {
 			$starIndex = 20 * ($PageNumber-1);
 			$searchKey = str_replace('-', ' ', $KeywordGenre);
 			$SearchGenreAnime = AnimeSearchGenreController::SearchGenreAnime($searchKey,$starIndex, 20, $LimitRowPegination);
-			$StructurDataSeo = AnimeSearchGenreController::StructurDataSeo();
+			$StructurDataSeo = AnimeSearchGenreController::StructurDataSeo($searchKey);
 			$trendingKeyword = '';
 			$tagsKeyword = '';
 			$PTR_API['TrendingKeyword'] = $trendingKeyword;
@@ -72,25 +73,31 @@ class AnimeSearchGenreController extends CI_Controller {
 		}
 	}
 
-	public function StructurDataSeo(){
+	public function StructurDataSeo($keyword){	
+		
+		$publishDate = '';
 		{#Seo Structur data
-			$param = array(
-				'main_url' => base_url(),
-				'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
-				'name_website' => 'Nimeindo',
-				'description' => "Nonton Streaming Anime Sub Indonesia",
-				'publish_date' => '2020-04-22T23:40',
-				'image_url' => '',
-				'name_page' => 'Search Anime - '
-			);
-			$structurDataSeo = array(
-				'Website' => SructurData::Website($param,false),
-				'Webpage' => SructurData::WebPage($param,false,True),
-				// 'Organization' => SructurData::Organization(null,True),
-				'CollectionPage' => SructurData::CollectionPage($param,false),
-			);
+				$param = array(
+					'main_url' => base_url(),
+					'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
+                    'url_detail' => base_url().'anime/genre/',
+                    'url_page' => base_url().'anime/genre/search/'.$keyword,
+					'url_search' => base_url().'anime-search/',
+					'Title' => 'Anime Search',
+					'date_published' => date(DATE_ISO8601, time()),
+					'date_modified' => date(DATE_ISO8601, time()),
+					'name_website' => 'Nimeindo',
+					'Summary' => "Your Anime Genre Search ".$keyword,
+					'description' => 'Kumpulan Anime Terbaru Substitle Indonesia'
+				);
+				
+				$structurDataSeo = array(
+                    'Brand' => SructurData::Brand($param,false),
+                    'SearchResultsPage' => SructurData::SearchResultsPage($param, false),
+					'Webpage' => SructurData::WebPage($param,false),
+					
+				);
 		}
-
 		return $structurDataSeo;
 	}
 

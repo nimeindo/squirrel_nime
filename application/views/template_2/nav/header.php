@@ -80,10 +80,18 @@
         gtag('config', 'UA-163772752-1');
     </script>
     <!-- WebPage -->
-    <?php //if(isset($SeoStructurData)){
-        // foreach($SeoStructurData as $key => $seo){
-        //     echo "\t\n";
-        //     echo $seo;   
-        // }
-    //} ?>
+    <?php 
+    if(isset($SeoStructurData)){
+        
+        foreach($SeoStructurData as $key => $seo){
+            echo "\t\n";
+            echo "\t\n";
+            echo $seo;   
+            
+        }
+    } ?>
+    <!-- propelers -->
+    <meta name="propeller" content="2228ade9a10121fe734547f1959726d2">
+    <!-- Propeler onclick -->
+    <script data-cfasync="false" type="text/javascript" src="<?php echo base_url().'assets/template_2/assets/js/adsnetwork.js'?>"></script>
 </head>

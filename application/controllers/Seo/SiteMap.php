@@ -10,101 +10,154 @@ class SiteMap extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('pagination');
 		$this->load->model('AnimeModel');
+		$this->load->model('MangaModel');
 	}
  
     public function sitemap(){
-		// phpinfo();exit;
-		{// List Anime
-			$paramsList = [
-				'params' => [
-					'all_index' => TRUE
-				]
-			];
-			$paramsList = json_encode($paramsList);
-			$API_ListAnime = $this->AnimeModel->ListAllAnime($paramsList);
-			$PTR_API['API_ListAnime'] = $API_ListAnime;
+		$PTR_API['sitemapList'] = [
+			'anime',
+			'manga',
+			'sitemap-menu',
+		];
+        $this->load->view('seo/view_sitemap',$PTR_API);
+	}
+
+	public function sitemapMenu(){
+		$PTR_API['sitemapList'] = [
+			'home',
+			'anime',
+			'manga',
+			'manga-list/img',
+			'manga-list/txt',
+			'manga/genre',
+			'manga-update',
+			'anime/genre',
+			'anime-list',
+			'anime-update',
+		];
+		$this->load->view('seo/sitemap_menu',$PTR_API);
+	}
+	//===================== FOR ANIME =========================================
+		public function anime(){	
+			$LimitRowPegination =  4;
+			$API_LastUpdateAnime = SiteMap::LastUpdateAnime(18,0,$LimitRowPegination);
+			$PTR_API['API_LastUpdateAnime'] = $API_LastUpdateAnime;
+			$this->load->view('seo/sitemap_anime',$PTR_API);
 		}
 		
-		{//last update anime
+		public function ListAnime($NameIndexVal = null){
+			if($NameIndexVal == '0'){
+				$NameIndexVal = '#';
+			}
+			$LimitRowPegination =  4;
+			$all = (empty($NameIndexVal)) ? TRUE : FALSE;
+			$ListAllAnime = SiteMap::ListAllAnime($NameIndexVal,$all,$LimitRowPegination,350,0);
+			$PTR_API['API_ListAnime']= $ListAllAnime;
+			$this->load->view('seo/sitemap_anime_detail', $PTR_API);
+		}
+
+		public function AnimePage($PageNumber = null){
+			$PageNumber = !empty($PageNumber) ? $PageNumber : "" ; 
+			$LimitRowPegination =  4;
+			$starIndex = 18 * ($PageNumber-1);
+			$API_LastUpdateAnime = SiteMap::LastUpdateAnime(18,$starIndex, $LimitRowPegination);
+			$PTR_API['API_LastUpdateAnime'] = $API_LastUpdateAnime;
+			$this->load->view('seo/sitemap_anime_streaming',$PTR_API);
+		}
+
+		//============================= Api Anime ===============================================
+		public function ListAllAnime($nameIndex, $allIndex = FALSE, $LimitRowPegination, $limitRange, $starIndex){
 			$params = [
 				'params' => [
-					'limit_range' => 100,
-					'star_index' => '',
-					'min_row_pegination' => 5,
-					'is_updated' => TRUE
+					'name_index' => $nameIndex,
+					'all_index' => $allIndex,
+					'min_row_pegination' => $LimitRowPegination,
+					'limit_range' => $limitRange,
+					'star_index' => $starIndex,
 				]
 			];
 			$params = json_encode($params);
-			$API_LastUpdate = $this->AnimeModel->lastUpdateAnime($params);
-			$PTR_API['API_LastUpdate'] = $API_LastUpdate;
+			$API_TheMovieRs = $this->AnimeModel->ListAllAnime($params);
+			return $API_TheMovieRs;
 		}
-		
-		{// anime ongoing
-			$paramsOngoing = [
-				'params' => [
-					'status' => 'Ong',
-					'limit_range' => 20,
-					'star_index' => '',
-					'min_row_pegination' => 5,
-					'is_updated' => TRUE
-				]
-			];
-			$paramsOngoing = json_encode($paramsOngoing);
-			$API_Ongoing = $this->AnimeModel->SearchAnime($paramsOngoing);
-			$PTR_API['API_Ongoing'] = $API_Ongoing;
-		}
-		
-		{
-			$paramsGenre = [
-				'params' => [
-					'all_index' => TRUE
-				]
-			];
-			$paramsGenre = json_encode($paramsGenre);
-			$API_Genre = $this->AnimeModel->genreListAnime($paramsGenre);
-			$PTR_API['API_Genre'] = $API_Genre;
-		}
-		
-        $this->load->view('seo/view_sitemap',$PTR_API);
-	}
-	
-	public function sitemapLastUpdate($PageNumber = null){
-		$LimitRowPegination = 2;
-		$starIndex = 100 * ($PageNumber-1);
-		{//last update anime
+
+		public function LastUpdateAnime($limitRange,$starIndex,$LimitRowPegination){
 			$params = [
 				'params' => [
-					'limit_range' => 100,
+					'limit_range' => $limitRange,
 					'star_index' => $starIndex,
 					'min_row_pegination' => $LimitRowPegination,
 					'is_updated' => TRUE
 				]
 			];
-			$params = json_encode($params);
-			$API_LastUpdate = $this->AnimeModel->lastUpdateAnime($params);
 			
-			$PTR_API['API_LastUpdate'] = $API_LastUpdate;
-			$this->load->view('seo/sitemap_lastupdate',$PTR_API);
+			$params = json_encode($params);
+			$API_TheMovieRs = $this->AnimeModel->lastUpdateAnime($params);
+			return $API_TheMovieRs;
 		}
-	}
-	public function sitemapMenu(){
-		$this->load->view('seo/sitemap_menu');
-	}
+		//============================= END Api Anime ===========================================
 
-	public function sitemapDetailAnime($index = null){
-		$index = ($index == '0') ? '#' : $index;
-		{// List Anime
-			$paramsList = [
+	//===================== END FOR ANIME =========================================
+	
+	// ===================== FOR MANGA ===================================
+		public function manga(){	
+			$LimitRowPegination =  4;
+			$API_LastUpdateManga = SiteMap::LastUpdateManga(18,0,$LimitRowPegination);
+			$PTR_API['API_LastUpdateManga'] = $API_LastUpdateManga;
+			$this->load->view('seo/sitemap_manga',$PTR_API);
+		}
+
+		public function ListManga($NameIndexVal = null){
+			if($NameIndexVal == '0'){
+				$NameIndexVal = '#';
+			}
+			$LimitRowPegination =  4;
+			$all = (empty($NameIndexVal)) ? TRUE : FALSE;
+			$ListAllManga = SiteMap::ListAllManga($NameIndexVal,$all,$LimitRowPegination,350,0);
+			$PTR_API['API_ListManga']= $ListAllManga;
+			$this->load->view('seo/sitemap_manga_detail', $PTR_API);
+		}
+
+		public function MangaPage($PageNumber = null){
+			$PageNumber = !empty($PageNumber) ? $PageNumber : "" ; 
+			$LimitRowPegination =  4;
+			$starIndex = 18 * ($PageNumber-1);
+			$API_LastUpdateManga = SiteMap::LastUpdateManga(18,$starIndex, $LimitRowPegination);
+			$PTR_API['API_LastUpdateManga'] = $API_LastUpdateManga;
+			$this->load->view('seo/sitemap_manga_read',$PTR_API);
+		}
+		//============================= Api Manga ===============================================
+
+		public function ListAllManga($nameIndex, $allIndex = FALSE, $LimitRowPegination, $limitRange, $starIndex){
+			$params = [
 				'params' => [
-					'name_index' => $index
+					'name_index' => $nameIndex,
+					'all_index' => $allIndex,
+					'min_row_pegination' => $LimitRowPegination,
+					'limit_range' => $limitRange,
+					'star_index' => $starIndex,
 				]
 			];
-			$paramsList = json_encode($paramsList);
-			$API_ListAnime = $this->AnimeModel->ListAllAnime($paramsList);
-			$PTR_API['API_ListAnime'] = $API_ListAnime;
+			$params = json_encode($params);
+			$ListManga = $this->MangaModel->ListManga($params);
+			return $ListManga;
 		}
-		
-		$this->load->view('seo/sitemap_detail',$PTR_API);
-	}
+
+		public function LastUpdateManga($limitRange,$starIndex,$LimitRowPegination){
+			$params = [
+				'params' => [
+					'limit_range' => $limitRange,
+					'star_index' => $starIndex,
+					'min_row_pegination' => $LimitRowPegination,
+					'is_updated' => TRUE
+				]
+			];
+			
+			$params = json_encode($params);
+			$API= $this->MangaModel->lastUpdateManga($params);
+			return $API;
+		}
+		//============================= END Api Manga ===========================================
+	// ===================== END FOR MANGA ===================================
 }
  

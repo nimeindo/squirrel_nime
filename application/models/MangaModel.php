@@ -420,4 +420,51 @@ class MangaModel extends CI_Model {
             return $API_MangaRs;
 		}
 	}
+
+	public function SliderManga($params){
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_PORT => $this->config->item('api_port_manga'),
+		CURLOPT_URL => $this->config->item('api_url_manga')."SliderManga".$this->config->item('api_inisial_manga'),
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => "",
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 30,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS => $params,
+		CURLOPT_HTTPHEADER => array(
+			"Content-Type: application/json",
+			"x-api-key:".$this->config->item('api_key_manga')
+		),
+		));
+		
+		$response = curl_exec($curl);
+		
+		$err = curl_error($curl);
+
+		curl_close($curl);
+		
+		if ($err) {
+			$res=array(
+				"API_MangaRs" => array(
+					"Version" => "M.1",
+					"Timestamp" => "",
+					"NameEnd" => "Slider Manga",
+					"Status"=> "Not Complete",
+					"Message"=>array(
+						"Type"=> "Info",
+						"ShortText"=> "Not Found",
+						"Code"=> 404
+					),
+				  "Body"=> []
+				)	  
+		);
+			$API_MangaRs=(json_decode($res));
+			return $API_MangaRs;
+		} else {
+			$API_MangaRs=(json_decode($response));
+			return $API_MangaRs;
+		}
+	}
 }

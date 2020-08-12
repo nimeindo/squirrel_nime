@@ -11,6 +11,7 @@ class MangaDetailController extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->library('user_agent');
 		$this->load->model('MangaModel');
+		$this->load->helper('date');
 		$this->load->library('../controllers/Seo/SructurData');
 	}
 	// dev
@@ -19,7 +20,7 @@ class MangaDetailController extends CI_Controller {
         $tagsKeyword ='';
         $DetailManga = MangaDetailController::DetailManga($slugDetail);
         
-        $structurDataSeo = MangaDetailController::StructurDataSeo();
+        $structurDataSeo = MangaDetailController::StructurDataSeo($slugDetail,'des');
         $PTR_API['SeoStructurData'] = $structurDataSeo;
         $PTR_API['TrendingKeyword'] = $trendingKeyword;
         $PTR_API['API_DetailManga'] = $DetailManga;
@@ -35,7 +36,7 @@ class MangaDetailController extends CI_Controller {
         $trendingKeyword = '';
         $tagsKeyword ='';
         $DetailManga = MangaDetailController::DetailManga($slugDetail);
-        $structurDataSeo = MangaDetailController::StructurDataSeo();
+        $structurDataSeo = MangaDetailController::StructurDataSeo($slugDetail,'chap');
         $PTR_API['SeoStructurData'] = $structurDataSeo;
         $PTR_API['TrendingKeyword'] = $trendingKeyword;
         $PTR_API['API_DetailManga'] = $DetailManga;
@@ -60,22 +61,43 @@ class MangaDetailController extends CI_Controller {
 		$API_MangaRs = $this->MangaModel->DetailManga($params);
 		return $API_MangaRs;
     }
-    public function StructurDataSeo(){
+    public function StructurDataSeo($slug,$rootDetail){	
+		$API_DetailManga = MangaDetailController::DetailManga($slug);
+		$description = '';
+		$imageUrl = '';
+		$Title = "";
+		$publishDate = '';
+		if($API_DetailManga->API_MangaRs->Status == "Not Complete"){ 
+		 }else{
+			foreach($API_DetailManga->API_MangaRs->Body->SingleListManga as $key => $API_DetailMangaV){ 
+				$Title = $API_DetailMangaV->Title;
+				$imageUrl = $API_DetailMangaV->Image;
+				$publishDate = $API_DetailMangaV->PublishDate;
+				foreach($API_DetailMangaV->ListDetail as $ListV){
+					$description = $ListV->Synopsis;
+				}
+			}
+		}
+
 		{#Seo Structur data
 			$param = array(
 				'main_url' => base_url(),
 				'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
+				'url_detail' => base_url().'manga-detail/'.$rootDetail.'/'.$slug,
+				'url_search' => base_url().'manga-search/',
+				'url_image_detail' => $imageUrl,
+				'Title' => $Title,
+				'date_published' => date(DATE_ISO8601, time()),
+				'date_modified' => date(DATE_ISO8601, time()),
 				'name_website' => 'Nimeindo',
-				'description' => "Baca Manga Indonesia",
-				'publish_date' => '2020-04-22T23:40',
-				'image_url' => '',
-				'name_page' => 'Search Anime - '
+				'Summary' => "Nimeindo - Nonton Streaming Anime Subtitle Indonesia Dan Baca Manga Indonesia",
+				'description' => $description
 			);
+			
 			$structurDataSeo = array(
-				'Website' => SructurData::Website($param,false),
-				'Webpage' => SructurData::WebPage($param,false,True),
-				// 'Organization' => SructurData::Organization(null,True),
-				'CollectionPage' => SructurData::CollectionPage($param,false),
+				'Brand' => SructurData::Brand($param,false),
+				'Webpage' => SructurData::WebPageDetail($param,false),
+				
 			);
 		}
 		return $structurDataSeo;

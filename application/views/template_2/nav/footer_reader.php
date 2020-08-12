@@ -27,7 +27,7 @@
                <div class="social-links">
                      <a target="_blank" href="https://www.facebook.com/Nimeindotv-113849613658888/"><i class="fab fa-facebook-square"></i></a>
                      <a target="_blank" href="https://www.instagram.com/nimeindotv/"><i class="fab fa-instagram"></i></a>
-                     <a target="_blank" href="https://id.pinterest.com/"><i class="fab fa-pinterest-square"></i></a>
+                     <a target="_blank" href="https://id.pinterest.com/nimeindotv/"><i class="fab fa-pinterest-square"></i></a>
                      <a target="_blank" href="https://twitter.com/nimeindotv"><i class="fab fa-twitter-square"></i></a>
                </div>
           <p>nimeindo sebuah website nonton anime, download anime dan baca manga sub indo , kalian bisa nonton anime online dan baca manga gratis</p>
