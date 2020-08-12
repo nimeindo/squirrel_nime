@@ -10,6 +10,7 @@ class MangaGenreListController extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('pagination');
 		$this->load->model('MangaModel');
+		$this->load->helper('date');
 		$this->load->library('../controllers/Seo/SructurData');
 		// header('Cache-Control: no-cache,must-revalidate,max-age=0');
     }
@@ -38,23 +39,28 @@ class MangaGenreListController extends CI_Controller {
 		$this->load->view('template_2/nav/footer');
     }
     
-    public function StructurDataSeo(){
+    public function StructurDataSeo(){	
+		
+		$publishDate = '';
 		{#Seo Structur data
-			$param = array(
-				'main_url' => base_url(),
-				'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
-				'name_website' => 'Nimeindo',
-				'name_page' => str_replace('-',' ',str_replace('/','',$_SERVER['REQUEST_URI'])).' - ',
-				'description' => "Nonton Streaming Manga Sub Indonesia",
-				'publish_date' => '2020-04-22T23:40',
-				'image_url' => '',
-			);
-			$structurDataSeo = array(
-				'Website' => SructurData::Website($param,false),
-				'Webpage' => SructurData::WebPage($param,false,True),
-				// 'Organization' => SructurData::Organization(null,True),
-				'CollectionPage' => SructurData::CollectionPage($param,false),
-			);
+				$param = array(
+					'main_url' => base_url(),
+					'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
+					'url_detail' => base_url().'manga/genre',
+					'url_search' => base_url().'manga-search/',
+					'Title' => 'Manga Genre',
+					'date_published' => date(DATE_ISO8601, time()),
+					'date_modified' => date(DATE_ISO8601, time()),
+					'name_website' => 'Nimeindo',
+					'Summary' => "Nimeindo - Nonton Streaming Anime Subtitle Indonesia Dan Baca Manga Indonesia",
+					'description' => 'Kumpulan Manga Terbaru Substitle Indonesia'
+				);
+				
+				$structurDataSeo = array(
+					'Brand' => SructurData::Brand($param,false),
+					'Webpage' => SructurData::WebPage2($param,false),
+					
+				);
 		}
 		return $structurDataSeo;
 	}

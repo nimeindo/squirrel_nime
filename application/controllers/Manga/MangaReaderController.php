@@ -11,6 +11,7 @@ class MangaReaderController extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->library('user_agent');
 		$this->load->model('MangaModel');
+		$this->load->helper('date');
 		$this->load->library('../controllers/Seo/SructurData');
     }
 
@@ -52,19 +53,17 @@ class MangaReaderController extends CI_Controller {
 				'main_url' => base_url(),
 				'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
 				'name_website' => 'Nimeindo',
-				'description' => "Baca Manga Indonesia",
-				'publish_date' => '2020-04-22T23:40',
-				'image_url' => '',
-				'name_page' => 'Search Anime - '
+				'Summary' => "Nimeindo - Nonton Streaming Anime Subtitle Indonesia Dan Baca Manga Indonesia",
+				'description' => "NimeIndo adalah website dimana kalian bisa nonton anime subtitle indonesia dan baca manga terlengkap dan terupdate dengan koleksi dari berbagai genre."
 			);
-			$structurDataSeo = array(
-				'Website' => SructurData::Website($param,false),
-				'Webpage' => SructurData::WebPage($param,false,True),
-				// 'Organization' => SructurData::Organization(null,True),
+			$structurDataSeo = [
+				'Brand' => SructurData::Brand($param,false),
 				'CollectionPage' => SructurData::CollectionPage($param,false),
-			);
+				'WebPage' => SructurData::WebPage($param,false),
+			];
 		}
+
 		return $structurDataSeo;
-    }
+	}
 
 }

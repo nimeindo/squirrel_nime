@@ -8,6 +8,7 @@ class AnimeDetailController extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('session');
+		$this->load->helper('date');
 		$this->load->library('pagination');
 		$this->load->model('AnimeModel');
 		$this->load->library('../controllers/Seo/SructurData');
@@ -39,11 +40,13 @@ class AnimeDetailController extends CI_Controller {
 		$ApiDetailAnime = AnimeDetailController::ApiDetailAnime($slug);
 		$description = '';
 		$imageUrl = '';
+		$Title = "";
 		$publishDate = '';
 		if($ApiDetailAnime->API_TheMovieRs->Status == "Not Complete"){ 
 		}else{
 			foreach($ApiDetailAnime->API_TheMovieRs->Body->SingleListAnime as $SingleListAnime){
 				$imageUrl = $SingleListAnime->Image;
+				$Title = $SingleListAnime->Title;
 				$publishDate = $SingleListAnime->PublishDate;
 				foreach($SingleListAnime->ListDetail as $ListDetail){
 					$description = $ListDetail->Synopsis;
@@ -55,18 +58,21 @@ class AnimeDetailController extends CI_Controller {
 				$param = array(
 					'main_url' => base_url(),
 					'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
+					'url_detail' => base_url().'anime-detail/des/'.$slug,
+					'url_search' => base_url().'anime-search/',
+					'url_image_detail' => $imageUrl,
+					'Title' => $Title,
+					'date_published' => date(DATE_ISO8601, time()),
+					'date_modified' => date(DATE_ISO8601, time()),
 					'name_website' => 'Nimeindo',
-					'name_page' => str_replace('-',' ',str_replace('/','',$_SERVER['REQUEST_URI'])).' - ',
-					'publish_date' => !empty($publishDate) ? $publishDate : '2020-04-22T23:40',
-					'image_url' => $imageUrl,
-					'description' => $description,
+					'Summary' => "Nimeindo - Nonton Streaming Anime Subtitle Indonesia Dan Baca Manga Indonesia",
+					'description' => $description
 				);
 				
 				$structurDataSeo = array(
-					'Website' => SructurData::Website($param,false),
-					'Webpage' => SructurData::WebPage($param,false),
-					// 'Organization' => SructurData::Organization(null,True),
-					'CollectionPage' => SructurData::CollectionPage($param,false),
+					'Brand' => SructurData::Brand($param,false),
+					'Webpage' => SructurData::WebPageDetail($param,false),
+					
 				);
 			}
 		return $structurDataSeo;

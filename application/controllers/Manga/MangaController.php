@@ -11,6 +11,7 @@ class MangaController extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->library('user_agent');
 		$this->load->model('MangaModel');
+		$this->load->helper('date');
 		$this->load->model('AnimeModel');
 		$this->load->library('../controllers/Seo/SructurData');
 	}
@@ -26,6 +27,7 @@ class MangaController extends CI_Controller {
 		$RecomendationManga = MangaController::RecomendationManga(12,0);
 		$ListMangaOng = MangaController::SearchManga("","Ong",12,0, $LimitRowPegination);
 		$SliderAnime = MangaController::SliderAnime(5);
+		$SliderManga = MangaController::SliderManga(5);
 
 
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
@@ -37,6 +39,7 @@ class MangaController extends CI_Controller {
 		$PTR_API['API_LastUpdateManga'] = $API_LastUpdateManga;
 		$PTR_API['API_SliderAnime'] = $SliderAnime;
 		$PTR_API['SeoStructurData'] = $structurDataSeo;
+		$PTR_API['API_SliderManga'] = $SliderManga;
 		
 		$this->load->view('template_2/nav/header',$PTR_API);
 		$this->load->view('template_2/nav/header_manga',$PTR_API);
@@ -46,6 +49,21 @@ class MangaController extends CI_Controller {
 		
 	}
 	
+	public function SliderManga($limitRange){
+		$LimitRowPegination = 2;
+		$params = [
+            'params' => [
+				'limit_range' => $limitRange,
+				'star_index' => '',
+				'is_updated' => TRUE
+            ]
+		];
+		
+		$params = json_encode($params);
+		$API_MangaRs = $this->MangaModel->SliderManga($params);
+		return $API_MangaRs;
+	}
+
 	public function SliderAnime($limitRange){
 		$LimitRowPegination = 2;
 		$params = [
@@ -83,17 +101,14 @@ class MangaController extends CI_Controller {
 				'main_url' => base_url(),
 				'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
 				'name_website' => 'Nimeindo',
-				'description' => "Baca Manga Indonesia",
-				'publish_date' => '2020-04-22T23:40',
-				'image_url' => '',
-				'name_page' => 'Search Anime - '
+				'Summary' => "Nimeindo - Nonton Streaming Anime Subtitle Indonesia Dan Baca Manga Indonesia",
+				'description' => "NimeIndo adalah website dimana kalian bisa nonton anime subtitle indonesia dan baca manga terlengkap dan terupdate dengan koleksi dari berbagai genre."
 			);
-			$structurDataSeo = array(
-				'Website' => SructurData::Website($param,false),
-				'Webpage' => SructurData::WebPage($param,false,True),
-				// 'Organization' => SructurData::Organization(null,True),
+			$structurDataSeo = [
+				'Brand' => SructurData::Brand($param,false),
 				'CollectionPage' => SructurData::CollectionPage($param,false),
-			);
+				'WebPage' => SructurData::WebPage($param,false),
+			];
 		}
 
 		return $structurDataSeo;
