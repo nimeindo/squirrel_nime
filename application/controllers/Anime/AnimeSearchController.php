@@ -9,7 +9,8 @@ class AnimeSearchController extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('session');
 		$this->load->library('pagination');
-		$this->load->library('user_agent');
+        $this->load->library('user_agent');
+        $this->load->helper('date');
 		$this->load->model('AnimeModel');
 		$this->load->library('../controllers/Seo/SructurData');
 		
@@ -22,7 +23,7 @@ class AnimeSearchController extends CI_Controller {
         if(!empty($Keyword)){
             $LimitRowPegination = ($this->agent->is_mobile()) ? 2 : 4;
             $SearchAnime = AnimeSearchController::SearchAnime($Keyword,'',12,0, $LimitRowPegination);
-            $structurDataSeo = AnimeSearchController::StructurDataSeo();
+            $structurDataSeo = AnimeSearchController::StructurDataSeo($Keyword);
             $PTR_API['TrendingKeyword'] = '';
             $PTR_API['TagsKeyword'] = '';
             $PTR_API['Status'] = 'anime';
@@ -45,7 +46,7 @@ class AnimeSearchController extends CI_Controller {
         $LimitRowPegination = ($this->agent->is_mobile()) ? 2 : 4;
         $status = 'Ong';
         $SearchAnime = AnimeSearchController::SearchAnime("",$status,12,0, $LimitRowPegination);
-        $structurDataSeo = AnimeSearchController::StructurDataSeo();
+        $structurDataSeo = AnimeSearchController::StructurDataSeo("");
         $PTR_API['TrendingKeyword'] = '';
         $PTR_API['TagsKeyword'] = '';
         $PTR_API['RefreshPage'] = TRUE;
@@ -79,7 +80,7 @@ class AnimeSearchController extends CI_Controller {
                 }
             // ============================== End APi Anime ================================
             
-            $structurDataSeo = AnimeSearchController::StructurDataSeo();
+            $structurDataSeo = AnimeSearchController::StructurDataSeo($Keyword);
             $TitleHeadLine = ($status == 'Ong') ? 'Anime Terbaru' : "Search Anime ".$Keyword;;
             $status = (empty($status)) ? 'anime' : $status;
             $Keyword = (empty($Keyword)) ? 'Ong' : $Keyword;
@@ -114,24 +115,31 @@ class AnimeSearchController extends CI_Controller {
         return $SearchAnime;
     }
  
-    public function StructurDataSeo(){
-        {#Seo Structur data
+    public function StructurDataSeo($keyword){	
+		
+		$publishDate = '';
+		{#Seo Structur data
 				$param = array(
 					'main_url' => base_url(),
 					'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
+                    'url_detail' => base_url().'anime-search/',
+                    'url_page' => base_url().'anime-search/?KeyW='.$keyword,
+					'url_search' => base_url().'anime-search/',
+					'Title' => 'Anime Search',
+					'date_published' => date(DATE_ISO8601, time()),
+					'date_modified' => date(DATE_ISO8601, time()),
 					'name_website' => 'Nimeindo',
-					'description' => "Nonton Streaming Anime Sub Indonesia",
-					'publish_date' => '2020-04-22T23:40',
-					'image_url' => '',
-					'name_page' => 'Search Anime - '
+					'Summary' => "Your Anime Search ".$keyword,
+					'description' => 'Kumpulan Anime Terbaru Substitle Indonesia'
 				);
+				
 				$structurDataSeo = array(
-					'Website' => SructurData::Website($param,false),
-					'Webpage' => SructurData::WebPage($param,false,True),
-					// 'Organization' => SructurData::Organization(null,True),
-					'CollectionPage' => SructurData::CollectionPage($param,false),
+                    'Brand' => SructurData::Brand($param,false),
+                    'SearchResultsPage' => SructurData::SearchResultsPage($param, false),
+					'Webpage' => SructurData::WebPage($param,false),
+					
 				);
-        }
-        return $structurDataSeo;
-    }
+		}
+		return $structurDataSeo;
+	}
 }

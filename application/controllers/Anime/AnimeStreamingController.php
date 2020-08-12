@@ -9,7 +9,8 @@ class AnimeStreamingController extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('session');
 		$this->load->library('pagination');
-		$this->load->model('AnimeModel');
+        $this->load->model('AnimeModel');
+        $this->load->helper('date');
 		$this->load->library('../controllers/Seo/SructurData');
 		
     }
@@ -19,7 +20,7 @@ class AnimeStreamingController extends CI_Controller {
         if(!empty($slug)){
             $Streaming = AnimeStreamingController::StreamAnime($slug);
             // echo json_encode($Streaming); exit;
-            $structurDataSeo = AnimeStreamingController::StructurDataSeo();
+            $structurDataSeo = AnimeStreamingController::StructurDataSeo($slug);
             $PTR_API['TrendingKeyword'] = '';
             $PTR_API['TagsKeyword'] = '';
             $PTR_API['API_Streaming'] = $Streaming;
@@ -47,25 +48,47 @@ class AnimeStreamingController extends CI_Controller {
         return $StreamAnime;
     }
 
-    public function StructurDataSeo(){
-        {#Seo Structur data
-			$param = array(
-				'main_url' => base_url(),
-				'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
-				'name_website' => 'Nimeindo',
-				'name_page' => str_replace('-',' ',str_replace('/','',$_SERVER['REQUEST_URI'])).' - ',
-				'publish_date' => !empty($publishDate) ? $publishDate : '2020-04-22T23:40',
-				'image_url' => '',
-				'description' => '',
-			);
+    public function StructurDataSeo($slug){	
+		$Streaming = AnimeStreamingController::StreamAnime($slug);
+		$description = '';
+		$imageUrl = '';
+		$Title = "";
+		$publishDate = '';
+		if($Streaming->API_TheMovieRs->Status == "Not Complete"){ 
+		}else{
+			foreach($Streaming->API_TheMovieRs->Body->StreamAnime as $StreamAnime){
+				$Title = $StreamAnime->Title;
+                $imageUrl = $StreamAnime->Image; 
+				foreach($StreamAnime->ListDetail as $ListDetail){
+                    $description = str_replace('nanime.org', 'nimeindo.net',$ListDetail->Synopsis);
+                    
+				}
 			
-			$structurDataSeo = array(
-				'Website' => SructurData::Website($param,false),
-				'Webpage' => SructurData::WebPage($param,false),
-				// 'Article' => SructurData::Article($param,false),
-				// 'Organization' => SructurData::Organization(null,True),
-				'CollectionPage' => SructurData::CollectionPage($param,false),
-			);
+			}
 		}
-    }
+		{#Seo Structur data
+				$param = array(
+					'main_url' => base_url(),
+					'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
+					'url_detail' => base_url().'anime-streaming/'.$slug,
+					'url_search' => base_url().'anime-search/',
+					'url_image_detail' => $imageUrl,
+                    'title_episode' => $Title,
+                    'Title' => $Title,
+                    'name_author' => $Title,
+					'date_published' => date(DATE_ISO8601, time()),
+					'date_modified' => date(DATE_ISO8601, time()),
+					'name_website' => 'Nimeindo',
+					'Summary' => "Nimeindo - Nonton Streaming Anime Subtitle Indonesia Dan Baca Manga Indonesia",
+					'description' => $description
+				);
+				
+				$structurDataSeo = array(
+					'Brand' => SructurData::Brand($param,false),
+					'Webpage' => SructurData::Webpage($param,false),
+					'Article' => SructurData::Article($param,false),
+				);
+			}
+		return $structurDataSeo;
+	}
 }

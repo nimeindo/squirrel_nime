@@ -10,7 +10,8 @@ class MangaSearchController extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('pagination');
 		$this->load->library('user_agent');
-		$this->load->model('MangaModel');
+        $this->load->model('MangaModel');
+        $this->load->helper('date');
 		$this->load->library('../controllers/Seo/SructurData');
 		
 		// header('Cache-Control: no-cache,must-revalidate,max-age=0');
@@ -22,7 +23,7 @@ class MangaSearchController extends CI_Controller {
         if(!empty($Keyword) ){
             $LimitRowPegination = ($this->agent->is_mobile()) ? 2 : 4;
             $SearchManga = MangaSearchController::SearchManga($Keyword,'',12,0, $LimitRowPegination);
-            $structurDataSeo = MangaSearchController::StructurDataSeo();
+            $structurDataSeo = MangaSearchController::StructurDataSeo($Keyword);
             $PTR_API['TrendingKeyword'] = '';
             $PTR_API['TagsKeyword'] = '';
             $PTR_API['RefreshPage'] = TRUE;
@@ -45,7 +46,7 @@ class MangaSearchController extends CI_Controller {
             $LimitRowPegination = ($this->agent->is_mobile()) ? 2 : 4;
             $status = 'Ong';
             $SearchManga = MangaSearchController::SearchManga("",$status,12,0, $LimitRowPegination);
-            $structurDataSeo = MangaSearchController::StructurDataSeo();
+            $structurDataSeo = MangaSearchController::StructurDataSeo("");
             $PTR_API['TrendingKeyword'] = '';
             $PTR_API['TagsKeyword'] = '';
             $PTR_API['RefreshPage'] = TRUE;
@@ -82,7 +83,7 @@ class MangaSearchController extends CI_Controller {
                 }
                 
             // ==============================End APi Manga ================================
-            $structurDataSeo = MangaSearchController::StructurDataSeo();
+            $structurDataSeo = MangaSearchController::StructurDataSeo($Keyword);
             $status = (empty($status)) ? 'manga' : $status;
             $Keyword = (empty($Keyword)) ? 'Ong' : $Keyword;
             $TitleHeadLine = ($status == 'Ong') ? 'Anime Terbaru' : "Search Anime ".$Keyword;;
@@ -118,24 +119,31 @@ class MangaSearchController extends CI_Controller {
         return $SearchManga;
     }
  
-    public function StructurDataSeo(){
-        {#Seo Structur data
+    public function StructurDataSeo($keyword){	
+		
+		$publishDate = '';
+		{#Seo Structur data
 				$param = array(
 					'main_url' => base_url(),
 					'url' => rtrim(base_url(),'/').$_SERVER['REQUEST_URI'],
+					'url_detail' => base_url().'manga-search/',
+                    'url_page' => base_url().'manga-search/?KeyW='.$keyword,
+                    'url_search' => base_url().'manga-search/',
+					'Title' => 'Manga Search',
+					'date_published' => date(DATE_ISO8601, time()),
+					'date_modified' => date(DATE_ISO8601, time()),
 					'name_website' => 'Nimeindo',
-					'description' => "Nonton Streaming Anime Sub Indonesia",
-					'publish_date' => '2020-04-22T23:40',
-					'image_url' => '',
-					'name_page' => 'Search Anime - '
+					'Summary' => "Your Manga Search ".$keyword,
+					'description' => 'Kumpulan Manga Terbaru Substitle Indonesia'
 				);
+				
 				$structurDataSeo = array(
-					'Website' => SructurData::Website($param,false),
-					'Webpage' => SructurData::WebPage($param,false,True),
-					// 'Organization' => SructurData::Organization(null,True),
-					'CollectionPage' => SructurData::CollectionPage($param,false),
+					'Brand' => SructurData::Brand($param,false),
+                    'SearchResultsPage' => SructurData::SearchResultsPage($param, false),
+					'Webpage' => SructurData::WebPage($param,false),
+					
 				);
-        }
-        return $structurDataSeo;
-    }
+		}
+		return $structurDataSeo;
+	}
 }
