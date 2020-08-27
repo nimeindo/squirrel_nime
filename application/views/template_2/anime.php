@@ -115,7 +115,7 @@
                   <?php }?>
                </div>
                <div class="loading">
-                  <img src="http://cn.e.pic.mangatoon.mobi/for-clients/loading.gif" width="50px;" alt="loading"/>
+                  <img src="" width="50px;" alt="loading"/>
                </div>
             </div>
          </div>
