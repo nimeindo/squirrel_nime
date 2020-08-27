@@ -19,13 +19,14 @@ class MangaDetailController extends CI_Controller {
 	{	$trendingKeyword = '';
         $tagsKeyword ='';
         $DetailManga = MangaDetailController::DetailManga($slugDetail);
-        
-        $structurDataSeo = MangaDetailController::StructurDataSeo($slugDetail,'des');
+		$structurDataSeo = MangaDetailController::StructurDataSeo($slugDetail,'des');
+		$DataMetaHeader = MangaDetailController::DataMetaHeader($DetailManga);
         $PTR_API['SeoStructurData'] = $structurDataSeo;
         $PTR_API['TrendingKeyword'] = $trendingKeyword;
         $PTR_API['API_DetailManga'] = $DetailManga;
 		$PTR_API['TagsKeyword'] = $tagsKeyword;
 		$PTR_API['RefreshPage'] = TRUE;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
         $this->load->view('template_2/nav/header',$PTR_API);
 		$this->load->view('template_2/nav/header_manga',$PTR_API);
 		$this->load->view('template_2/manga_des',$PTR_API);
@@ -36,17 +37,43 @@ class MangaDetailController extends CI_Controller {
         $trendingKeyword = '';
         $tagsKeyword ='';
         $DetailManga = MangaDetailController::DetailManga($slugDetail);
-        $structurDataSeo = MangaDetailController::StructurDataSeo($slugDetail,'chap');
+		$structurDataSeo = MangaDetailController::StructurDataSeo($slugDetail,'chap');
+		$DataMetaHeader = MangaDetailController::DataMetaHeader($DetailManga);
         $PTR_API['SeoStructurData'] = $structurDataSeo;
         $PTR_API['TrendingKeyword'] = $trendingKeyword;
         $PTR_API['API_DetailManga'] = $DetailManga;
         $PTR_API['TagsKeyword'] = $tagsKeyword;
-        $PTR_API['RefreshPage'] = TRUE;
+		$PTR_API['RefreshPage'] = TRUE;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
         $this->load->view('template_2/nav/header',$PTR_API);
 		$this->load->view('template_2/nav/header_manga',$PTR_API);
 		$this->load->view('template_2/manga_chap',$PTR_API);
 		$this->load->view('template_2/nav/footer');
-    }
+	}
+	
+	public function DataMetaHeader($API_DetailManga){
+		if($API_DetailManga->API_MangaRs->Status == "Not Complete"){
+			$DataMetaHeader = [
+				"Description" => '',
+				"Title" => '',
+				"Image" => '',
+				"Url" => ''
+			];
+		}else{
+			foreach($API_DetailManga->API_MangaRs->Body->SingleListManga as $key => $API_DetailMangaV){ 
+				$SlugDetail = $API_DetailMangaV->SlugDetail;
+				foreach($API_DetailMangaV->ListDetail as $ListV){
+					$DataMetaHeader = [
+						"Description" => $ListV->Synopsis,
+						"Title" => $API_DetailMangaV->Title,
+						"Image" => $API_DetailMangaV->Image,
+						"Url" => base_url().'manga-detail/des/'.$SlugDetail
+					];
+				}
+			}
+		}
+		return $DataMetaHeader;
+	}
 
     public function DetailManga($slugDetail){
         $LimitRowPegination = 2;

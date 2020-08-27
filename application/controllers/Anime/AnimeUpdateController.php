@@ -19,12 +19,14 @@ class AnimeUpdateController extends CI_Controller {
 		$LimitRowPegination =  ($this->agent->is_mobile()) ? 2 : 4;
 		$structurDataSeo = AnimeUpdateController::StructurDataSeo();
 		$API_LastUpdateAnime = AnimeUpdateController::LastUpdateAnime(18,0,$LimitRowPegination);
+		$DataMetaHeader = AnimeUpdateController::DataMetaHeader();
         $PTR_API['TrendingKeyword'] = '';
 		$PTR_API['TagsKeyword'] = '';
 		$PTR_API['RefreshPage'] = TRUE;
 		$PTR_API['API_LastUpdateAnime'] = $API_LastUpdateAnime;
 		$PTR_API['LimitRowPegination'] = $LimitRowPegination;
 		$PTR_API['SeoStructurData'] = $structurDataSeo;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 		
 		$this->load->view('template_2/nav/header',$PTR_API);
 		$this->load->view('template_2/nav/header_anime',$PTR_API);
@@ -48,6 +50,7 @@ class AnimeUpdateController extends CI_Controller {
 				$API_LastUpdateAnime = AnimeUpdateController::LastUpdateAnime(18,$starIndex, $LimitRowPegination);
 			}
 			$structurDataSeo = AnimeUpdateController::StructurDataSeo();
+			$DataMetaHeader = AnimeUpdateController::DataMetaHeader();
 			$trendingKeyword = '';
 			$tagsKeyword = '';
 			
@@ -57,6 +60,7 @@ class AnimeUpdateController extends CI_Controller {
             $PTR_API['API_LastUpdateAnime'] = $API_LastUpdateAnime;
 			$PTR_API['PageNumberNow'] = $PageNumber;
 			$PTR_API['RefreshPage'] = FALSE;
+			$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 			$PTR_API['LimitRowPegination'] = $LimitRowPegination;
 			$PTR_API['SeoStructurData'] = $structurDataSeo;
 			$this->load->view('template_2/nav/header',$PTR_API);
@@ -82,6 +86,17 @@ class AnimeUpdateController extends CI_Controller {
 		$params = json_encode($params);
 		$API_TheMovieRs = $this->AnimeModel->lastUpdateAnime($params);
 		return $API_TheMovieRs;
+	}
+
+	public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
 	}
 
     public function StructurDataSeo(){	

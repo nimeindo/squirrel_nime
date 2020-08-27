@@ -29,6 +29,7 @@ class AnimeListController extends CI_Controller {
 		$all = (empty($NameIndexVal)) ? TRUE : FALSE;
 		$ListAllAnime = AnimeListController::ListAllAnime($NameIndexVal,$all,$LimitRowPegination,350,0);
 		$StructurDataSeo = AnimeListController::StructurDataSeo();
+		$DataMetaHeader = AnimeListController::DataMetaHeader();
 		$trendingKeyword = '';
 		$tagsKeyword = '';
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
@@ -36,6 +37,7 @@ class AnimeListController extends CI_Controller {
 		$PTR_API['API_ListAllAnime']= $ListAllAnime;
 		$PTR_API['NameIndexVal'] = '0';
 		$PTR_API['LimitRowPegination'] = $LimitRowPegination;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 		$PTR_API['RefreshPage'] = TRUE;
 		$PTR_API['SeoStructurData'] = $StructurDataSeo;
         $this->load->view('template_2/nav/header',$PTR_API);
@@ -43,6 +45,7 @@ class AnimeListController extends CI_Controller {
 		$this->load->view('template_2/anime_list_txt');
 		$this->load->view('template_2/nav/footer');
 	}
+	
 
 	public function pages($nameIndex, $numberAnime){
 		$LimitRowPegination = ($this->agent->is_mobile()) ? 2 : 4;
@@ -65,18 +68,31 @@ class AnimeListController extends CI_Controller {
 
 		$ListAllAnime = AnimeListController::ListAllAnime($nameIndex,$all,$LimitRowPegination,$limitRange,$starIndexAnime);
 		$StructurDataSeo = AnimeListController::StructurDataSeo();
+		$DataMetaHeader = AnimeListController::DataMetaHeader();
 		$trendingKeyword = '';
 		$tagsKeyword = '';
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
 		$PTR_API['TagsKeyword'] = $trendingKeyword;
 		$PTR_API['API_ListAllAnime']= $ListAllAnime;
 		$PTR_API['LimitRowPegination'] = $LimitRowPegination;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 		$PTR_API['NameIndexVal'] = '0';
 		$PTR_API['RefreshPage'] = TRUE;
 		$this->load->view('template_2/nav/header',$PTR_API);
 		$this->load->view('template_2/nav/header_anime',$PTR_API);
 		$this->load->view('template_2/anime_list_txt');
 		$this->load->view('template_2/nav/footer');
+	}
+
+	public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
 	}
 	
 	public function StructurDataSeo(){	

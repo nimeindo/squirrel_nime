@@ -22,11 +22,13 @@ class AnimeDetailController extends CI_Controller {
 			$tagsKeyword = '';
 			$API_DetailAnime = AnimeDetailController::ApiDetailAnime($slug);
 			$structurDataSeo = AnimeDetailController::StructurDataSeo($slug);
+			$DataMetaHeader = AnimeDetailController::DataMetaHeader($API_DetailAnime);
 			$PTR_API['TrendingKeyword'] = $trendingKeyword;
 			$PTR_API['TagsKeyword'] = $tagsKeyword;
 			$PTR_API['API_DetailAnime'] = $API_DetailAnime;
 			$PTR_API['RefreshPage'] = TRUE;
 			$PTR_API['SeoStructurData'] = $structurDataSeo;
+			$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 			$this->load->view('template_2/nav/header',$PTR_API);
 			$this->load->view('template_2/nav/header_anime',$PTR_API);
 			$this->load->view('template_2/anime_des');
@@ -34,6 +36,32 @@ class AnimeDetailController extends CI_Controller {
 		}else{
 			redirect('/Home');
 		}	
+	}
+
+	public function DataMetaHeader($API_DetailAnime){
+		if($API_DetailAnime->API_TheMovieRs->Status == "Not Complete"){ 
+			$DataMetaHeader = [
+				"Description" => '',
+				"Title" => '',
+				"Image" => '',
+				"Url" => ''
+			];
+		}else{
+			foreach($API_DetailAnime->API_TheMovieRs->Body->SingleListAnime as $SingleListAnime){ 
+				$slugDetail = $SingleListAnime->SlugDetail;
+				foreach($SingleListAnime->ListDetail as $ListDetail){ 
+					$DataMetaHeader = [
+						"Description" => $ListDetail->Synopsis,
+						"Title" => $SingleListAnime->Image,
+						"Image" => $SingleListAnime->Image,
+						"Url" => base_url().'anime-detail/des/'.$slugDetail
+					];
+				}
+			}
+		}
+		
+
+		return $DataMetaHeader;
 	}
 	
 	public function StructurDataSeo($slug){	

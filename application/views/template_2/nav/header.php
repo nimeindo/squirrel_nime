@@ -13,18 +13,33 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="Nimeindo, Anime Indo, Nonton Anime, Nimeindo, Nanime">
+    <meta name="keywords" content="Nimeindo, Anime Indo, Nonton Anime, Nimeindo, Samehdaku.vip">
     <meta name="trending_keywords" content="<?php echo $TrendingKeyword ?>">
     <meta name="tags_keywords" content="<?php echo $TagsKeyword ?>">
-    <meta name="description" content="NimeIndo adalah website dimana kalian bisa nonton anime subtitle indonesia terlengkap dan terupdate dengan koleksi lebih dari 30.000 judul dan 40.000 episode anime dari berbagai genre." />
-    <meta property=og:image content="<?php echo base_url()."assets/template_2/assets/img/logoo.png"?>">
+    <?php 
+        
+        if(empty($DataMetaHeader['Description'])){
+            $Description = "NimeIndo adalah website dimana kalian bisa nonton anime subtitle indonesia terlengkap dan terupdate dengan koleksi lebih dari 30.000 judul dan 40.000 episode anime dari berbagai genre.";
+            $Title = 'Nimeindo | Nonton Streaming Anime Subtitle Indonesia';
+            $Image = base_url()."assets/template_2/assets/img/logoo.png";
+            $Url = base_url();
+        }else{
+            $Description = $DataMetaHeader['Description'];
+			$Title = $DataMetaHeader['Title'];
+            $Image = $DataMetaHeader['Image'];
+            $Url = $DataMetaHeader['Url'];
+        }
+        
+    ?>
+    <meta name="description" content=<?php echo $Description ?> />
+    <meta property=og:image content="<?php echo $Image ?>">
     <meta property="og:image:width" content="1501" />
     <meta property="og:image:height" content="2639" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Nimeindo | Nonton Streaming Anime Subtitle Indonesia" />
-    <meta property="og:description" content="NimeIndo adalah website dimana kalian bisa nonton anime subtitle indonesia terlengkap dan terupdate dengan koleksi lebih dari 30.000 judul dan 40.000 episode anime dari berbagai genre." />
-    <meta property="og:url" content="<?php echo base_url()?>" />
+    <meta property="og:title" content="<?php echo $Title ?>" />
+    <meta property="og:description" content="<?php echo $Description ?>" />
+    <meta property="og:url" content="<?php echo $Url ?>" />
     <meta property="og:site_name" content="Nimeindo" />
     <meta content="<?php echo base_url()?>" name="author" />
     <meta content="id" name="language" />

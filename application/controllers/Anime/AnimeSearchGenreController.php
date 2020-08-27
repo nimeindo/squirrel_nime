@@ -28,6 +28,7 @@ class AnimeSearchGenreController extends CI_Controller {
 			$searchKey = str_replace('-', ' ', $KeywordGenre);
 			$SearchGenreAnime = AnimeSearchGenreController::SearchGenreAnime($searchKey, $starIndex, 20, $LimitRowPegination);
 			$StructurDataSeo = AnimeSearchGenreController::StructurDataSeo($searchKey);
+			$DataMetaHeader = AnimeSearchGenreController::DataMetaHeader();
 			$PTR_API['TrendingKeyword'] = $trendingKeyword;
 			$PTR_API['TagsKeyword'] = $tagsKeyword;
 			$PTR_API['API_SearchGenreAnime'] = $SearchGenreAnime;
@@ -35,6 +36,7 @@ class AnimeSearchGenreController extends CI_Controller {
 			$PTR_API['KeywordGenre'] = $KeywordGenre;
 			$PTR_API['RefreshPage'] = FALSE;
 			$PTR_API['SeoStructurData'] = $StructurDataSeo;
+			$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 			$this->load->view('template_2/nav/header',$PTR_API);
 			$this->load->view('template_2/nav/header_anime',$PTR_API);
 			$this->load->view('template_2/anime_search_genre');
@@ -54,6 +56,7 @@ class AnimeSearchGenreController extends CI_Controller {
 			$searchKey = str_replace('-', ' ', $KeywordGenre);
 			$SearchGenreAnime = AnimeSearchGenreController::SearchGenreAnime($searchKey,$starIndex, 20, $LimitRowPegination);
 			$StructurDataSeo = AnimeSearchGenreController::StructurDataSeo($searchKey);
+			$DataMetaHeader = AnimeSearchGenreController::DataMetaHeader();
 			$trendingKeyword = '';
 			$tagsKeyword = '';
 			$PTR_API['TrendingKeyword'] = $trendingKeyword;
@@ -62,6 +65,7 @@ class AnimeSearchGenreController extends CI_Controller {
 			$PTR_API['KeywordGenre'] = $KeywordGenre;
 			$PTR_API['PageNumberNow'] = $PageNumber;
 			$PTR_API['LimitRowPegination'] = $LimitRowPegination;
+			$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 			$PTR_API['RefreshPage'] = FALSE;
 			$PTR_API['SeoStructurData'] = $StructurDataSeo;
 			$this->load->view('template_2/nav/header',$PTR_API);
@@ -71,6 +75,17 @@ class AnimeSearchGenreController extends CI_Controller {
 		}else{
 			redirect('');
 		}
+	}
+
+	public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
 	}
 
 	public function StructurDataSeo($keyword){	

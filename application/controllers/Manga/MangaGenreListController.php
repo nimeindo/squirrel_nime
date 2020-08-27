@@ -26,6 +26,7 @@ class MangaGenreListController extends CI_Controller {
 		$all = (empty($NameIndexVal)) ? TRUE : FALSE;
 		$GenreListManga = MangaGenreListController::GenreListManga($NameIndexVal,$all);
 		$StructurDataSeo = MangaGenreListController::StructurDataSeo();
+		$DataMetaHeader = MangaGenreListController::DataMetaHeader();
 		$trendingKeyword = '';
 		$tagsKeyword = '';
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
@@ -33,11 +34,23 @@ class MangaGenreListController extends CI_Controller {
 		$PTR_API['API_GenreListAllManga']= $GenreListManga;
 		$PTR_API['RefreshPage'] = TRUE;
 		$PTR_API['SeoStructurData'] = $StructurDataSeo;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
         $this->load->view('template_2/nav/header',$PTR_API);
 		$this->load->view('template_2/nav/header_manga',$PTR_API);
 		$this->load->view('template_2/manga_genre_list_txt');
 		$this->load->view('template_2/nav/footer');
-    }
+	}
+
+	public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
+	}
     
     public function StructurDataSeo(){	
 		

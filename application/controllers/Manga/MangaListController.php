@@ -30,6 +30,7 @@ class MangaListController extends CI_Controller {
 		
 		$ListManga = MangaListController::ListManga($NameIndexVal,$all,$LimitRowPegination,350,0);
 		$StructurDataSeo = MangaListController::StructurDataSeo('txt');
+		$DataMetaHeader = MangaListController::DataMetaHeader();
 		$trendingKeyword = '';
 		$tagsKeyword = '';
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
@@ -38,6 +39,7 @@ class MangaListController extends CI_Controller {
 		$PTR_API['NameIndexVal'] = $nameIndex;
 		$PTR_API['LimitRowPegination'] = $LimitRowPegination;
 		$PTR_API['RefreshPage'] = TRUE;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 		$PTR_API['SeoStructurData'] = $StructurDataSeo;
         $this->load->view('template_2/nav/header',$PTR_API);
 		$this->load->view('template_2/nav/header_manga',$PTR_API);
@@ -66,12 +68,14 @@ class MangaListController extends CI_Controller {
 
 		$ListManga = MangaListController::ListManga($nameIndex,$all,$LimitRowPegination,$limitRange,$starIndex);
 		$StructurDataSeo = MangaListController::StructurDataSeo();
+		$DataMetaHeader = MangaListController::DataMetaHeader();
 		$trendingKeyword = '';
 		$tagsKeyword = '';
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
 		$PTR_API['TagsKeyword'] = $trendingKeyword;
 		$PTR_API['API_ListManga']= $ListManga;
 		$PTR_API['LimitRowPegination'] = $LimitRowPegination;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 		$PTR_API['NameIndexVal'] = $nameIndex;
 		$PTR_API['RefreshPage'] = TRUE;
 		$this->load->view('template_2/nav/header',$PTR_API);
@@ -95,6 +99,7 @@ class MangaListController extends CI_Controller {
 		$all = (empty($NameIndexVal)) ? TRUE : FALSE;
 		$ListManga = MangaListController::ListManga($NameIndexVal,$all,$LimitRowPegination,$limitRange,0);
 		$StructurDataSeo = MangaListController::StructurDataSeo('img');
+		$DataMetaHeader = MangaListController::DataMetaHeader();
 		$trendingKeyword = '';
         $tagsKeyword = '';
         
@@ -105,6 +110,7 @@ class MangaListController extends CI_Controller {
         $PTR_API['limitRange'] = $limitRange;
         $PTR_API['DataLimitRange'] = MangaListController::DataLimitRange();
 		$PTR_API['LimitRowPegination'] = $LimitRowPegination;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 		$PTR_API['RefreshPage'] = TRUE;
 		$PTR_API['SeoStructurData'] = $StructurDataSeo;
         $this->load->view('template_2/nav/header',$PTR_API);
@@ -135,13 +141,15 @@ class MangaListController extends CI_Controller {
 
 		$ListManga = MangaListController::ListManga($nameIndex,$all,$LimitRowPegination,$limitRange,$starIndex);
 		$StructurDataSeo = MangaListController::StructurDataSeo();
+		$DataMetaHeader = MangaListController::DataMetaHeader();
 		$trendingKeyword = '';
 		$tagsKeyword = '';
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
 		$PTR_API['TagsKeyword'] = $trendingKeyword;
 		$PTR_API['API_ListManga']= $ListManga;
 		$PTR_API['LimitRowPegination'] = $LimitRowPegination;
-        $PTR_API['NameIndexVal'] = $nameIndex;
+		$PTR_API['NameIndexVal'] = $nameIndex;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
         $PTR_API['limitRange'] = $limitRange;
         $PTR_API['DataLimitRange'] = MangaListController::DataLimitRange();
 		$PTR_API['RefreshPage'] = TRUE;
@@ -153,7 +161,18 @@ class MangaListController extends CI_Controller {
     
     public function DataLimitRange(){
         return $DataLimitRange = [50,150,100,200,300];
-    }
+	}
+	
+	public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
+	}
 	
 	public function StructurDataSeo($rootList){	
 		

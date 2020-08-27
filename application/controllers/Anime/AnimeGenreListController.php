@@ -27,6 +27,7 @@ class AnimeGenreListController extends CI_Controller {
 		$all = (empty($NameIndexVal)) ? TRUE : FALSE;
 		$GenreListAnime = AnimeGenreListController::genreListAnime($NameIndexVal,$all);
 		$StructurDataSeo = AnimeGenreListController::StructurDataSeo();
+		$DataMetaHeader = AnimeGenreListController::DataMetaHeader();
 		$trendingKeyword = '';
 		$tagsKeyword = '';
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
@@ -34,11 +35,23 @@ class AnimeGenreListController extends CI_Controller {
 		$PTR_API['API_GenreListAllAnime']= $GenreListAnime;
 		$PTR_API['RefreshPage'] = TRUE;
 		$PTR_API['SeoStructurData'] = $StructurDataSeo;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
         $this->load->view('template_2/nav/header',$PTR_API);
 		$this->load->view('template_2/nav/header_anime',$PTR_API);
 		$this->load->view('template_2/anime_genre_list_txt');
 		$this->load->view('template_2/nav/footer');
-    }
+	}
+
+	public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
+	}
     
     public function StructurDataSeo(){	
 		

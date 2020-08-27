@@ -28,6 +28,7 @@ class MangaController extends CI_Controller {
 		$ListMangaOng = MangaController::SearchManga("","Ong",12,0, $LimitRowPegination);
 		$SliderAnime = MangaController::SliderAnime(5);
 		$SliderManga = MangaController::SliderManga(5);
+		$DataMetaHeader = MangaController::DataMetaHeader();
 
 
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
@@ -38,8 +39,10 @@ class MangaController extends CI_Controller {
 		$PTR_API['API_ListMangaOng'] = $ListMangaOng;
 		$PTR_API['API_LastUpdateManga'] = $API_LastUpdateManga;
 		$PTR_API['API_SliderAnime'] = $SliderAnime;
-		$PTR_API['SeoStructurData'] = $structurDataSeo;
 		$PTR_API['API_SliderManga'] = $SliderManga;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
+		$PTR_API['SeoStructurData'] = $structurDataSeo;
+		
 		
 		$this->load->view('template_2/nav/header',$PTR_API);
 		$this->load->view('template_2/nav/header_manga',$PTR_API);
@@ -47,6 +50,17 @@ class MangaController extends CI_Controller {
 		$this->load->view('template_2/manga',$PTR_API);
 		$this->load->view('template_2/nav/footer');
 		
+	}
+
+	public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
 	}
 	
 	public function SliderManga($limitRange){

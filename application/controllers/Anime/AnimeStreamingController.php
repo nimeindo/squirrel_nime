@@ -19,13 +19,14 @@ class AnimeStreamingController extends CI_Controller {
         $slug = (!empty($slug)) ?  $slug : '';
         if(!empty($slug)){
             $Streaming = AnimeStreamingController::StreamAnime($slug);
-            // echo json_encode($Streaming); exit;
-            $structurDataSeo = AnimeStreamingController::StructurDataSeo($slug);
+			$structurDataSeo = AnimeStreamingController::StructurDataSeo($slug);
+			$DataMetaHeader = AnimeStreamingController::DataMetaHeader($Streaming);
             $PTR_API['TrendingKeyword'] = '';
             $PTR_API['TagsKeyword'] = '';
             $PTR_API['API_Streaming'] = $Streaming;
             $PTR_API['RefreshPage'] = FALSE;
-            $PTR_API['SeoStructurData'] = $structurDataSeo;
+			$PTR_API['SeoStructurData'] = $structurDataSeo;
+			$PTR_API['DataMetaHeader'] = $DataMetaHeader;
             $this->load->view('template_2/nav/header',$PTR_API);
             $this->load->view('template_2/nav/header_anime',$PTR_API);
             $this->load->view('template_2/anime_streaming');
@@ -36,7 +37,30 @@ class AnimeStreamingController extends CI_Controller {
         
 
     }
-
+	public function DataMetaHeader($API_Streaming){
+		if($API_Streaming->API_TheMovieRs->Status == "Not Complete"){ 
+			$DataMetaHeader = [
+				"Description" => '',
+				"Title" => '',
+				"Image" => '',
+				"Url" => ''
+			];
+		}else{
+			foreach($API_Streaming->API_TheMovieRs->Body->StreamAnime as $StreamAnime){ 
+				$SlugEpNow = $StreamAnime->SlugEp;
+				foreach($StreamAnime->ListDetail as $ListDetail){
+					$DataMetaHeader = [
+						"Description" => str_replace('nanime.org', 'nimeindo.net',$ListDetail->Synopsis),
+						"Title" => $StreamAnime->Title,
+						"Image" => $StreamAnime->Image,
+						"Url" => base_url().'anime/streaming/'.$SlugEpNow
+					];
+				}
+				
+			}
+		}
+		return $DataMetaHeader;
+	}
 
     public function StreamAnime($slug){
         $params = [
