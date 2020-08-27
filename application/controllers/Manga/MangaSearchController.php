@@ -24,6 +24,7 @@ class MangaSearchController extends CI_Controller {
             $LimitRowPegination = ($this->agent->is_mobile()) ? 2 : 4;
             $SearchManga = MangaSearchController::SearchManga($Keyword,'',12,0, $LimitRowPegination);
             $structurDataSeo = MangaSearchController::StructurDataSeo($Keyword);
+            $DataMetaHeader = MangaSearchController::DataMetaHeader();
             $PTR_API['TrendingKeyword'] = '';
             $PTR_API['TagsKeyword'] = '';
             $PTR_API['RefreshPage'] = TRUE;
@@ -33,6 +34,7 @@ class MangaSearchController extends CI_Controller {
             $PTR_API['API_SearchManga'] = $SearchManga;
             $PTR_API['LimitRowPegination'] = $LimitRowPegination;
             $PTR_API['SeoStructurData'] = $structurDataSeo;
+            $PTR_API['DataMetaHeader'] = $DataMetaHeader;
             $this->load->view('template_2/nav/header',$PTR_API);
             $this->load->view('template_2/nav/header_manga',$PTR_API);
             $this->load->view('template_2/manga_search',$PTR_API);
@@ -47,6 +49,7 @@ class MangaSearchController extends CI_Controller {
             $status = 'Ong';
             $SearchManga = MangaSearchController::SearchManga("",$status,12,0, $LimitRowPegination);
             $structurDataSeo = MangaSearchController::StructurDataSeo("");
+            $DataMetaHeader = MangaSearchController::DataMetaHeader();
             $PTR_API['TrendingKeyword'] = '';
             $PTR_API['TagsKeyword'] = '';
             $PTR_API['RefreshPage'] = TRUE;
@@ -56,6 +59,7 @@ class MangaSearchController extends CI_Controller {
             $PTR_API['API_SearchManga'] = $SearchManga;
             $PTR_API['LimitRowPegination'] = $LimitRowPegination;
             $PTR_API['SeoStructurData'] = $structurDataSeo;
+            $PTR_API['DataMetaHeader'] = $DataMetaHeader;
             $this->load->view('template_2/nav/header',$PTR_API);
             $this->load->view('template_2/nav/header_manga',$PTR_API);
             $this->load->view('template_2/manga_search',$PTR_API);
@@ -84,6 +88,7 @@ class MangaSearchController extends CI_Controller {
                 
             // ==============================End APi Manga ================================
             $structurDataSeo = MangaSearchController::StructurDataSeo($Keyword);
+            $DataMetaHeader = MangaSearchController::DataMetaHeader();
             $status = (empty($status)) ? 'manga' : $status;
             $Keyword = (empty($Keyword)) ? 'Ong' : $Keyword;
             $TitleHeadLine = ($status == 'Ong') ? 'Anime Terbaru' : "Search Anime ".$Keyword;;
@@ -96,12 +101,23 @@ class MangaSearchController extends CI_Controller {
             $PTR_API['API_SearchManga'] = $SearchManga;
             $PTR_API['LimitRowPegination'] = $LimitRowPegination;
             $PTR_API['SeoStructurData'] = $structurDataSeo;
+            $PTR_API['DataMetaHeader'] = $DataMetaHeader;
             $this->load->view('template_2/nav/header',$PTR_API);
             $this->load->view('template_2/nav/header_manga',$PTR_API);
             $this->load->view('template_2/manga_search',$PTR_API);
             $this->load->view('template_2/nav/footer');
         }
     }
+    public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
+	}
 
     public function SearchManga($Keyword, $Status ,$limitRange, $startIndex, $LimitRowPegination){
         $paramsSearch = [

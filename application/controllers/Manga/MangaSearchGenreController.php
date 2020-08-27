@@ -28,8 +28,10 @@ class MangaSearchGenreController extends CI_Controller {
 			$searchKey = str_replace('-', '', $KeywordGenre);
 			$SearchGenreManga = MangaSearchGenreController::SearchGenreManga($searchKey, $starIndex, 20, $LimitRowPegination);
 			$StructurDataSeo = MangaSearchGenreController::StructurDataSeo($searchKey);
+			$DataMetaHeader = MangaSearchGenreController::DataMetaHeader();
 			
 			$PTR_API['TrendingKeyword'] = $trendingKeyword;
+			$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 			$PTR_API['TagsKeyword'] = $tagsKeyword;
 			$PTR_API['API_SearchGenreManga'] = $SearchGenreManga;
 			$PTR_API['LimitRowPegination'] = $LimitRowPegination;
@@ -56,12 +58,14 @@ class MangaSearchGenreController extends CI_Controller {
 			$searchKey = str_replace('-', '', $KeywordGenre);
 			$SearchGenreManga = MangaSearchGenreController::SearchGenreManga($searchKey,$starIndex, 20, $LimitRowPegination);
 			$StructurDataSeo = MangaSearchGenreController::StructurDataSeo($searchKey);
+			$DataMetaHeader = MangaSearchGenreController::DataMetaHeader();
 			$trendingKeyword = '';
 			$tagsKeyword = '';
 			$PTR_API['TrendingKeyword'] = $trendingKeyword;
 			$PTR_API['TagsKeyword'] = $tagsKeyword;
 			$PTR_API['API_SearchGenreManga'] = $SearchGenreManga;
 			$PTR_API['KeywordGenre'] = $KeywordGenre;
+			$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 			$PTR_API['PageNumberNow'] = $PageNumber;
 			$PTR_API['LimitRowPegination'] = $LimitRowPegination;
 			$PTR_API['RefreshPage'] = FALSE;
@@ -73,6 +77,17 @@ class MangaSearchGenreController extends CI_Controller {
 		}else{
 			redirect('');
 		}
+	}
+
+	public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
 	}
 
 	public function StructurDataSeo($keyword){	

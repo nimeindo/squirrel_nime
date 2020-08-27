@@ -19,13 +19,14 @@ class MangaReaderController extends CI_Controller {
 		$slug = !empty($slug) ? $slug : "" ; 
 		if(!empty($slug) ||  isset($slug)){
 			$ApiChapterManga = MangaReaderController::ApiChapterManga($slug);
-			// echo json_encode($ApiChapterManga);exit;
 			$structurDataSeo = MangaReaderController::StructurDataSeo();
+			$DataMetaHeader = MangaReaderController::DataMetaHeader($ApiChapterManga);
 			$PTR_API['SeoStructurData'] = $structurDataSeo;
 			$PTR_API['TrendingKeyword'] = '';
 			$PTR_API['TagsKeyword'] = '';
 			$PTR_API['RefreshPage'] = TRUE;
 			$PTR_API['Api_ChapterManga'] = $ApiChapterManga;
+			$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 			$this->load->view('template_2/nav/header',$PTR_API);
 			$this->load->view('template_2/nav/header_reader',$PTR_API);
 			$this->load->view('template_2/manga_read',$PTR_API);
@@ -34,7 +35,32 @@ class MangaReaderController extends CI_Controller {
 			redirect("");
 		}
 		
-    }
+	}
+	public function DataMetaHeader($Api_ChapterManga){
+		if($Api_ChapterManga->API_MangaRs->Status == "Not Complete"){ 
+			$DataMetaHeader = [
+				"Description" => '',
+				"Title" => '',
+				"Image" => '',
+				"Url" => ''
+			];
+		}else{
+			foreach($Api_ChapterManga->API_MangaRs->Body->ChapterManga as $key => $Api_ChapterMangaV){ 
+				$ListDetail = $Api_ChapterMangaV->ListDetail;
+				foreach($ListDetail as $ListDetailV){
+					$SlugChp = $Api_ChapterMangaV->SlugChp;
+					$DataMetaHeader = [
+						"Description" => $ListDetailV->Synopsis,
+						"Title" => substr($Api_ChapterMangaV->Title,0,20).'...',
+						"Image" => $Api_ChapterMangaV->Image,
+						"Url" => site_url('manga-read/'.$SlugChp)
+					];
+				}
+			}
+
+		}
+		return $DataMetaHeader;
+	}
 
     public function  ApiChapterManga($slug){
         $paramsSearch = [

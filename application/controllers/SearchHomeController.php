@@ -26,12 +26,14 @@ class SearchHomeController extends CI_Controller {
             $SearchAnime = SearchHomeController::SearchAnime($Keyword,12,0, $LimitRowPegination);
             $SearchManga = SearchHomeController::SearchManga($Keyword,12,0, $LimitRowPegination);
             $structurDataSeo = SearchHomeController::StructurDataSeo($Keyword);
+            $DataMetaHeader = SearchHomeController::DataMetaHeader();
             $PTR_API['TrendingKeyword'] = '';
             $PTR_API['TagsKeyword'] = '';
             $PTR_API['RefreshPage'] = TRUE;
             $PTR_API['KeywordSearch'] = $Keyword;
             $PTR_API['API_SearchAnime'] = $SearchAnime;
             $PTR_API['API_SearchManga'] = $SearchManga;
+            $PTR_API['DataMetaHeader'] = $DataMetaHeader;
             $PTR_API['LimitRowPegination'] = $LimitRowPegination;
             $PTR_API['SeoStructurData'] = $structurDataSeo;
             $this->load->view('template_2/nav/header',$PTR_API);
@@ -74,12 +76,14 @@ class SearchHomeController extends CI_Controller {
             // ============================== End APi Anime ================================
             
             $structurDataSeo = SearchHomeController::StructurDataSeo($Keyword);
+            $DataMetaHeader = SearchHomeController::DataMetaHeader();
             $PTR_API['TrendingKeyword'] = '';
             $PTR_API['TagsKeyword'] = '';
             $PTR_API['RefreshPage'] = TRUE;
             $PTR_API['KeywordSearch'] = $Keyword;
             $PTR_API['API_SearchAnime'] = $SearchAnime;
             $PTR_API['API_SearchManga'] = $SearchManga;
+            $PTR_API['DataMetaHeader'] = $DataMetaHeader;
             $PTR_API['LimitRowPegination'] = $LimitRowPegination;
             $PTR_API['SeoStructurData'] = $structurDataSeo;
             $this->load->view('template_2/nav/header',$PTR_API);
@@ -88,6 +92,18 @@ class SearchHomeController extends CI_Controller {
             $this->load->view('template_2/nav/footer');
         }
     }
+
+    public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
+	}
+
     public function SearchAnime($Keyword, $limitRange, $startIndex, $LimitRowPegination){
         $paramsSearch = [
             'params' => [
