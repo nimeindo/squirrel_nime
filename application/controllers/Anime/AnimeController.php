@@ -27,7 +27,7 @@ class AnimeController extends CI_Controller {
 		$ListAnimeOng = AnimeController::SearchAnime("","Ong",12,0, $LimitRowPegination);
 		$SliderAnime = AnimeController::SliderAnime(5);
 		$SliderManga = AnimeController::SliderManga(5);
-
+		$DataMetaHeader = AnimeController::DataMetaHeader();
 
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
 		$PTR_API['TagsKeyword'] = $tagsKeyword;
@@ -38,6 +38,7 @@ class AnimeController extends CI_Controller {
 		$PTR_API['API_LastUpdateAnime'] = $API_LastUpdateAnime;
 		$PTR_API['API_SliderAnime'] = $SliderAnime;
 		$PTR_API['API_SliderManga'] = $SliderManga;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 		$PTR_API['SeoStructurData'] = $structurDataSeo;
 		
 		$this->load->view('template_2/nav/header',$PTR_API);
@@ -46,6 +47,17 @@ class AnimeController extends CI_Controller {
 		$this->load->view('template_2/anime',$PTR_API);
 		$this->load->view('template_2/nav/footer');
 		
+	}
+
+	public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
 	}
 	public function SliderManga($limitRange){
 		$LimitRowPegination = 2;

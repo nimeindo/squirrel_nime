@@ -30,10 +30,11 @@ class Home extends CI_Controller {
 		$TopAnime = Home::TopAnime(5);
 		$SliderAnime = Home::SliderAnime(5);
 		$SliderManga = Home::SliderManga(5);
-		
+		$DataMetaHeader = Home::DataMetaHeader();
 		
 		$trendingKeyword = '';
 		$tagsKeyword ='';
+		
 		
 		$PTR_API['TrendingKeyword'] = $trendingKeyword;
 		$PTR_API['TagsKeyword'] = $tagsKeyword;
@@ -47,6 +48,7 @@ class Home extends CI_Controller {
 		$PTR_API['API_SliderAnime'] = $SliderAnime;
 		$PTR_API['API_SliderManga'] = $SliderManga;
 		$PTR_API['RefreshPage'] = TRUE;
+		$PTR_API['DataMetaHeader'] = $DataMetaHeader;
 		$PTR_API['SeoStructurData'] = $structurDataSeo;
 		
 		$this->load->view('template_2/nav/header',$PTR_API);
@@ -56,6 +58,17 @@ class Home extends CI_Controller {
 		$this->load->view('template_2/nav/footer');
 		
 	} 
+
+	public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
+	}
 	
 	public function LastUpdateAnime($limitRange){
 		$LimitRowPegination = 2;

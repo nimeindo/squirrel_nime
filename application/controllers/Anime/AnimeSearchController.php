@@ -24,6 +24,7 @@ class AnimeSearchController extends CI_Controller {
             $LimitRowPegination = ($this->agent->is_mobile()) ? 2 : 4;
             $SearchAnime = AnimeSearchController::SearchAnime($Keyword,'',12,0, $LimitRowPegination);
             $structurDataSeo = AnimeSearchController::StructurDataSeo($Keyword);
+            $DataMetaHeader = AnimeSearchController::DataMetaHeader();
             $PTR_API['TrendingKeyword'] = '';
             $PTR_API['TagsKeyword'] = '';
             $PTR_API['Status'] = 'anime';
@@ -32,6 +33,7 @@ class AnimeSearchController extends CI_Controller {
             $PTR_API['TitleHeadLine'] = "Search Anime ".$Keyword;
             $PTR_API['API_SearchAnime'] = $SearchAnime;
             $PTR_API['LimitRowPegination'] = $LimitRowPegination;
+            $PTR_API['DataMetaHeader'] = $DataMetaHeader;
             $PTR_API['SeoStructurData'] = $structurDataSeo;
             $this->load->view('template_2/nav/header',$PTR_API);
             $this->load->view('template_2/nav/header_anime',$PTR_API);
@@ -47,6 +49,7 @@ class AnimeSearchController extends CI_Controller {
         $status = 'Ong';
         $SearchAnime = AnimeSearchController::SearchAnime("",$status,12,0, $LimitRowPegination);
         $structurDataSeo = AnimeSearchController::StructurDataSeo("");
+        $DataMetaHeader = AnimeSearchController::DataMetaHeader();
         $PTR_API['TrendingKeyword'] = '';
         $PTR_API['TagsKeyword'] = '';
         $PTR_API['RefreshPage'] = TRUE;
@@ -56,6 +59,7 @@ class AnimeSearchController extends CI_Controller {
         $PTR_API['API_SearchAnime'] = $SearchAnime;
         $PTR_API['LimitRowPegination'] = $LimitRowPegination;
         $PTR_API['SeoStructurData'] = $structurDataSeo;
+        $PTR_API['DataMetaHeader'] = $DataMetaHeader;
         $this->load->view('template_2/nav/header',$PTR_API);
         $this->load->view('template_2/nav/header_anime',$PTR_API);
         $this->load->view('template_2/anime_search',$PTR_API);
@@ -81,6 +85,7 @@ class AnimeSearchController extends CI_Controller {
             // ============================== End APi Anime ================================
             
             $structurDataSeo = AnimeSearchController::StructurDataSeo($Keyword);
+            $DataMetaHeader = AnimeSearchController::DataMetaHeader();
             $TitleHeadLine = ($status == 'Ong') ? 'Anime Terbaru' : "Search Anime ".$Keyword;;
             $status = (empty($status)) ? 'anime' : $status;
             $Keyword = (empty($Keyword)) ? 'Ong' : $Keyword;
@@ -93,12 +98,24 @@ class AnimeSearchController extends CI_Controller {
             $PTR_API['API_SearchAnime'] = $SearchAnime;
             $PTR_API['LimitRowPegination'] = $LimitRowPegination;
             $PTR_API['SeoStructurData'] = $structurDataSeo;
+            $PTR_API['DataMetaHeader'] = $DataMetaHeader;
             $this->load->view('template_2/nav/header',$PTR_API);
             $this->load->view('template_2/nav/header_anime',$PTR_API);
             $this->load->view('template_2/anime_search',$PTR_API);
             $this->load->view('template_2/nav/footer');
         }
     }
+
+    public function DataMetaHeader(){
+		$DataMetaHeader = [
+			"Description" => '',
+			"Title" => '',
+			"Image" => '',
+			"Url" => ''
+		];
+
+		return $DataMetaHeader;
+	}
     public function SearchAnime($Keyword, $Status,$limitRange, $startIndex, $LimitRowPegination){
         $paramsSearch = [
             'params' => [
