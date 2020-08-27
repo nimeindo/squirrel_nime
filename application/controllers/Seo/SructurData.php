@@ -85,7 +85,7 @@ class SructurData {
                             ],
                             "query-input" => [
                                 "@type" => "PropertyValueSpecification",
-                                "valueRequired" => "http://schema.org/True",
+                                "valueRequired" => "https://schema.org/True",
                                 "valueName" => "search_term_string"
                             ]
                         ],
@@ -187,7 +187,7 @@ class SructurData {
                             ],
                             "query-input" => [
                                 "@type" => "PropertyValueSpecification",
-                                "valueRequired" => "http://schema.org/True",
+                                "valueRequired" => "https://schema.org/True",
                                 "valueName" => "search_term_string"
                             ]
                         ],
@@ -315,7 +315,7 @@ class SructurData {
                             ],
                             "query-input" => [
                                 "@type" => "PropertyValueSpecification",
-                                "valueRequired" => "http://schema.org/True",
+                                "valueRequired" => "https://schema.org/True",
                                 "valueName" => "search_term_string"
                             ]
                         ]
@@ -384,7 +384,7 @@ class SructurData {
                         ],
                         "query-input" => [
                             "@type" => "PropertyValueSpecification",
-                            "valueRequired" => "http://schema.org/True",
+                            "valueRequired" => "https://schema.org/True",
                             "valueName" => "search_term_string"
                         ]
                     ]
@@ -514,7 +514,7 @@ class SructurData {
                                 ],
                                 "query-input" => [
                                     "@type" => "PropertyValueSpecification",
-                                    "valueRequired" => "http://schema.org/True",
+                                    "valueRequired" => "https://schema.org/True",
                                     "valueName" => "search_term_string"
                                 ]
                             ],
@@ -587,7 +587,7 @@ class SructurData {
                                 ],
                                 "query-input" => [
                                     "@type" => "PropertyValueSpecification",
-                                    "valueRequired" => "http://schema.org/True",
+                                    "valueRequired" => "https://schema.org/True",
                                     "valueName" => "search_term_string"
                                 ]
                             ],

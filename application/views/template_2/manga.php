@@ -123,7 +123,7 @@
                   <?php }?>
                </div>
                <div class="loading">
-                  <img src="http://cn.e.pic.mangatoon.mobi/for-clients/loading.gif" alt="not found" width="50px;"/>
+                  <img src="" alt="not found" width="50px;"/>
                </div>
             </div>
          </div>
