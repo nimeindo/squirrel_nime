@@ -102,7 +102,7 @@ $route['manga/genre/search/(:any)/pages/(:any)'] = 'Manga/MangaSearchGenreContro
 
 
 
-$route['sitemap/anime\.xml'] = "Seo/SiteMap/anime";
+$route['sitemap/anime-streaming\.xml'] = "Seo/SiteMap/anime";
 $route['sitemap/anime/anime-pages-(:any)\.xml'] = "Seo/SiteMap/AnimePage/$1";
 $route['sitemap/anime/list-anime-(:any)\.xml'] = "Seo/SiteMap/ListAnime/$1";
 

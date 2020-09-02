@@ -15,7 +15,7 @@ class SiteMap extends CI_Controller {
  
     public function sitemap(){
 		$PTR_API['sitemapList'] = [
-			'anime',
+			'anime-streaming',
 			'manga',
 			'sitemap-menu',
 		];
