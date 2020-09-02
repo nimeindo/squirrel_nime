@@ -1,12 +1,13 @@
 
 <?php 
-header('Content-type: application/xml; charset="ISO-8859-1"',true);  
-	$TotalSearchPage = 1;
-	if($API_LastUpdateAnime->API_TheMovieRs->Status == "Not Complete"){ 
-	}else{
-		$TotalSearchPage =$API_LastUpdateAnime->API_TheMovieRs->Body->TotalSearchPage;
-	}
+$TotalSearchPage = 1;
+if($API_LastUpdateAnime->API_TheMovieRs->Status == "Not Complete"){ 
+}else{
+	$TotalSearchPage =$API_LastUpdateAnime->API_TheMovieRs->Body->TotalSearchPage;
+}
+// header('Content-type: application/xml; charset="ISO-8859-1"',true);  
 ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>	
 		<loc><?php echo base_url().'sitemap/anime/list-anime-0.xml';?></loc>
