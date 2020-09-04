@@ -54,7 +54,7 @@
                         <div class="adshome mb40"></div>
                         <div class="player-area">
                             <div class="mirrorarea">
-                                <button class="btn mirrorbuttn" type="button" data-toggle="collapse" data-target="#mirror" aria-controls="mirror" aria-expanded="false" aria-label="Toggle navigation"> <i class="fas fa-server"></i> Server Player </button>
+                                <button class="btn mirrorbuttn" type="button" data-toggle="collapse" data-target="#mirror" aria-controls="mirror" aria-expanded="true" aria-label="Toggle navigation"> <i class="fas fa-server"></i> Server Player </button>
                                 <!-- <div class="socialshare">
                                     <div class="socshare">
                                         <a class="icsocial " href="https://www.instagram.com/nimeindotv/" rel="noopener noreferrer nofollow" target="_blank"> <i class="fab fa-instagram"></i> </a>
@@ -62,7 +62,7 @@
                                     
                                 </div> -->
                             </div>
-                            <div class="collapse navbar-collapse" id="mirror">
+                            <div class="collapse navbar-collapse show" id="mirror">
                                 <div class="row mirror-buttons mb-3">
                                 <?php if($API_Streaming->API_TheMovieRs->Status == "Not Complete"){ ?>
                                 <?php }else{?>
@@ -93,8 +93,10 @@
                                             </div>
                                             <div id="player_embed">
                                                 <div class="pframe" id="pframe">
-                                                    <?php $ServerLocal = isset($serverData[1]) ? $serverData[1] : ''; ?>
-                                                    <iframe id="videoPlay" class="playeriframe" src="<?php echo $ServerLocal; ?>" frameborder="0" scrolling="no" autoplay="false" allow=" encrypted-media" allowfullscreen="">
+                                                    <?php $ServerLocal = isset($serverData[2]) ? $serverData[2] : $serverData[1]; 
+                                                          $serverSet = !empty($ServerLocal) ? $ServerLocal : "";
+                                                    ?>
+                                                    <iframe id="videoPlay" class="playeriframe" src="<?php echo $serverSet; ?>" frameborder="0" scrolling="no" autoplay="false" allow=" encrypted-media" allowfullscreen="">
                                                     </iframe>
                                                 </div>
                                             </div>
