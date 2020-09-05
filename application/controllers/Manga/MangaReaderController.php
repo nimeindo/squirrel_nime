@@ -13,6 +13,7 @@ class MangaReaderController extends CI_Controller {
 		$this->load->model('MangaModel');
 		$this->load->helper('date');
 		$this->load->library('../controllers/Seo/SructurData');
+		$this->load->library('../controllers/Helpers/HelpersController');
     }
 
     public function MangaRead($slug){
@@ -50,7 +51,7 @@ class MangaReaderController extends CI_Controller {
 				foreach($ListDetail as $ListDetailV){
 					$SlugChp = $Api_ChapterMangaV->SlugChp;
 					$DataMetaHeader = [
-						"Description" => $ListDetailV->Synopsis,
+						"Description" => HelpersController::__normalizeString($ListDetailV->Synopsis),
 						"Title" => substr($Api_ChapterMangaV->Title,0,20).'...',
 						"Image" => $Api_ChapterMangaV->Image,
 						"Url" => site_url('manga-read/'.$SlugChp)
