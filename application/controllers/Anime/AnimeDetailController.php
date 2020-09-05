@@ -12,6 +12,7 @@ class AnimeDetailController extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->model('AnimeModel');
 		$this->load->library('../controllers/Seo/SructurData');
+		$this->load->library('../controllers/Helpers/HelpersController');
 		// header('Cache-Control: no-cache,must-revalidate,max-age=0');
     }
 
@@ -51,7 +52,7 @@ class AnimeDetailController extends CI_Controller {
 				$slugDetail = $SingleListAnime->SlugDetail;
 				foreach($SingleListAnime->ListDetail as $ListDetail){ 
 					$DataMetaHeader = [
-						"Description" => $ListDetail->Synopsis,
+						"Description" => HelpersController::__normalizeString($ListDetail->Synopsis),
 						"Title" => $SingleListAnime->Image,
 						"Image" => $SingleListAnime->Image,
 						"Url" => base_url().'anime-detail/des/'.$slugDetail

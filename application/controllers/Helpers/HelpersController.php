@@ -4,29 +4,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class HelpersController {
 
     
-    public static function DataLimitRange(){
-        return $DataLimitRange = [50,150,100,200,300];
-	}
+        public static function DataLimitRange(){
+                return $DataLimitRange = [50,150,100,200,300];
+        }
 	
-	public static function __normalizeString($text){
-        // Strip HTML Tags
-        $clear = strip_tags($text);
+        public static function __normalizeString($text){
+                // Strip HTML Tags
+                $clear = strip_tags($text);
 
-        $clear = str_replace(["“","”","–"], ["","","-"], $clear);
-        // Clean all special characters
-        $clear = htmlentities($clear);
-        // Clean up things like &amp;
-        $clear = html_entity_decode($clear);
-        // Strip out any url-encoded stuff
-        $clear = urldecode($clear);
-        // Replace Multiple spaces with single space
-        $clear = preg_replace('/ +/', ' ', $clear);
-        // Trim the string of leading/trailing space
-        $clear = trim($clear);
-        $clear = self::__normalizeUrl($clear);
-        $clear = self::__clearUtf($clear);
+                $clear = str_replace(["“","”","–"], ["","","-"], $clear);
+                // Clean all special characters
+                $clear = htmlentities($clear);
+                // Clean up things like &amp;
+                $clear = html_entity_decode($clear);
+                // Strip out any url-encoded stuff
+                $clear = urldecode($clear);
+                // Replace Multiple spaces with single space
+                $clear = preg_replace('/ +/', ' ', $clear);
+                // Trim the string of leading/trailing space
+                $clear = trim($clear);
+                $clear = self::__normalizeUrl($clear);
+                $clear = self::__clearUtf($clear);
 
-        return $clear;
+                return $clear;
 	}
 	
 	public static function __normalizeUrl($input) {
