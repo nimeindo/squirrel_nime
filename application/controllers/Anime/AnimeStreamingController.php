@@ -12,6 +12,7 @@ class AnimeStreamingController extends CI_Controller {
         $this->load->model('AnimeModel');
         $this->load->helper('date');
 		$this->load->library('../controllers/Seo/SructurData');
+		$this->load->library('../controllers/Helpers/HelpersController');
 		
     }
 
