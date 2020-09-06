@@ -52,7 +52,7 @@ class AnimeDetailController extends CI_Controller {
 				$slugDetail = $SingleListAnime->SlugDetail;
 				foreach($SingleListAnime->ListDetail as $ListDetail){ 
 					$DataMetaHeader = [
-						"Description" => HelpersController::__normalizeString($ListDetail->Synopsis),
+						"Description" => ($ListDetail->Synopsis),
 						"Title" => $SingleListAnime->Image,
 						"Image" => $SingleListAnime->Image,
 						"Url" => base_url().'anime-detail/des/'.$slugDetail
