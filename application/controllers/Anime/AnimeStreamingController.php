@@ -50,7 +50,7 @@ class AnimeStreamingController extends CI_Controller {
 			foreach($API_Streaming->API_TheMovieRs->Body->StreamAnime as $StreamAnime){ 
 				$SlugEpNow = $StreamAnime->SlugEp;
 				foreach($StreamAnime->ListDetail as $ListDetail){
-					$descrip = HelpersController::__normalizeString(str_replace('nanime.org', 'nimeindo.net',$ListDetail->Synopsis));
+					$descrip = (str_replace('nanime.org', 'nimeindo.net',$ListDetail->Synopsis));
 					$DataMetaHeader = [
 						"Description" => $descrip,
 						"Title" => $StreamAnime->Title,
