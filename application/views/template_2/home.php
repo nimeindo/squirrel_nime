@@ -66,54 +66,54 @@
 <!-- Card Body Anime Terbaru -->
 <div class="content-body">
       <div class="left-content card-full">
-          <!-- #region LastUpdate Manga -->
+
+         <!-- #region LastUpdate Anime -->
          <div class="postbody">   
             <section class="dark">
                <div class="widget-title">
-                  <h2>Baca Manga Terbaru</h2>
+                  <h2>Nonton Anime Terbaru</h2>
                </div>
                <div class="widget-body">
                   <div class="content">
                      <div class="post-show chapterbaru">
                         <div class="row">
-                           <?php foreach($LastUpdateManga as $key => $API_LastUpdateMangaV){ ?>
-                            <?php $slug = $API_LastUpdateMangaV->SlugChp; 
-                                  $Star = $API_LastUpdateMangaV->Star; 
-                                  $Stars = '';
-                                  for($i = 0 ; $i < $Star ;$i++){
+                            <?php foreach($LastUpdateAnime as $key => $API_LastUpdateAnimeV){ ?>
+                            <?php $slug = $API_LastUpdateAnimeV->SlugEp; 
+                                 $Star = $API_LastUpdateAnimeV->Star; 
+                                 $Stars = '';
+                                 for($i = 0 ; $i < $Star ;$i++){
                                     $Stars .= '★';
-                                  }      
+                                 }      
                             ?>
-                                 <div class="col-6 col-sm-6 col-md-3 col-lg-2 mb40 width20">
-                                       <a href="<?php echo site_url('manga-read/'.$slug); ?>">
-                                             <div class="episode-card">
-                                                <div class="episode-ratio background-cover" style="" >
-                                                <img  src="<?php echo $API_LastUpdateMangaV->Image ?>" onerror="this.src='<?php echo base_url().'assets/template_2/assets/img/404_card_image_1.jpg'; ?>'" alt="<?php echo $API_LastUpdateMangaV->Title; ?>">
-                                                   <div class="episode-detail px-3 pt-5">
-                                                         <div class="">
-                                                            <h5 class="text-white"><?php echo $API_LastUpdateMangaV->Title; ?></h5>
-                                                            <div class="ratingarea">
-                                                               <span class="series-rating" style="background-size: 0% 100%"><?php echo $Stars; ?></span>
-                                                               <i class="score"><?php echo $API_LastUpdateMangaV->Rating; ?></i>
-                                                            </div>
-                                                         </div>
-                                                         <div class="status-type text-white"> <span class="text-h6"></span> <span class="text-h6">TV</span></div>
-                                                   </div>
-                                                   <div class="episode-number manga-number"><?php echo $API_LastUpdateMangaV->Chapter ?></div>
+                                <div class="col-6 col-sm-6 col-md-3 col-lg-2 mb40 width20">
+                                    <a href="<?php echo site_url('anime-streaming/'.$slug); ?>">
+                                        <div class="episode-card">
+                                            <div class="episode-ratio background-cover" style="" >
+                                            <img  src="<?php echo $API_LastUpdateAnimeV->Image ?>" onerror="this.src='<?php echo base_url().'assets/template_2/assets/img/404_card_image_1.jpg'; ?>'" alt="<?php echo $API_LastUpdateAnimeV->Title; ?>">
+                                                <div class="episode-detail px-3 pt-5">
+                                                    <div class="">
+                                                        <h5 class="text-white"><?php echo $API_LastUpdateAnimeV->Title; ?></h5>
+                                                        <div class="ratingarea">
+                                                        <span class="series-rating" style="background-size: 0% 100%"><?php echo $Stars; ?></span>
+                                                            <i class="score"><?php echo $API_LastUpdateAnimeV->Rating; ?></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="status-type text-white"> <span class="text-h6"></span> <span class="text-h6">TV</span></div>
                                                 </div>
-                                             </div>
-                                       </a>      
-                                 </div>
-                              <?php } ?>
+                                                <div class="episode-number"><?php echo $API_LastUpdateAnimeV->Episode ?></div>
+                                            </div>
+                                        </div>
+                                    </a>      
+                                </div>
+                                <?php } ?>
                         </div>
-                        <a class="linkupdate" href="<?php echo site_url('manga-update/'); ?>">Lihat Semua Chapter Manga Terbaru</a>
+                        <a class="linkupdate" href="<?php echo site_url('anime-update/'); ?>">Lihat Semua Episode Anime Terbaru</a>
                      </div>
                   </div>
                </div>
-            </section>
-            
+            </section>   
          </div>
-         <!-- #endregion Lastupdate Manga-->
+         <!-- #endregion LstUpdate Anime -->
 
          <!-- Genre -->
          <div class="postbody">   
@@ -197,87 +197,127 @@
             </section>
             
          </div>
-        
-         <!-- #region LastUpdate Anime -->
+         <!-- #region LastUpdate Manga -->
          <div class="postbody">   
-            <section class="dark">
-               <div class="widget-title">
-                  <h2>Nonton Anime Terbaru</h2>
-               </div>
-               <div class="widget-body">
-                  <div class="content">
-                     <div class="post-show chapterbaru">
-                        <div class="row">
-                            <?php foreach($LastUpdateAnime as $key => $API_LastUpdateAnimeV){ ?>
-                            <?php $slug = $API_LastUpdateAnimeV->SlugEp; 
-                                 $Star = $API_LastUpdateAnimeV->Star; 
-                                 $Stars = '';
-                                 for($i = 0 ; $i < $Star ;$i++){
-                                    $Stars .= '★';
-                                 }      
-                            ?>
-                                <div class="col-6 col-sm-6 col-md-3 col-lg-2 mb40 width20">
-                                    <a href="<?php echo site_url('anime-streaming/'.$slug); ?>">
-                                        <div class="episode-card">
-                                            <div class="episode-ratio background-cover" style="" >
-                                            <img  src="<?php echo $API_LastUpdateAnimeV->Image ?>" onerror="this.src='<?php echo base_url().'assets/template_2/assets/img/404_card_image_1.jpg'; ?>'" alt="<?php echo $API_LastUpdateAnimeV->Title; ?>">
-                                                <div class="episode-detail px-3 pt-5">
-                                                    <div class="">
-                                                        <h5 class="text-white"><?php echo $API_LastUpdateAnimeV->Title; ?></h5>
-                                                        <div class="ratingarea">
-                                                        <span class="series-rating" style="background-size: 0% 100%"><?php echo $Stars; ?></span>
-                                                            <i class="score"><?php echo $API_LastUpdateAnimeV->Rating; ?></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="status-type text-white"> <span class="text-h6"></span> <span class="text-h6">TV</span></div>
+               <section class="dark">
+                  <div class="widget-title">
+                     <h2>Baca Manga Terbaru</h2>
+                  </div>
+                  <div class="widget-body">
+                     <div class="content">
+                        <div class="post-show chapterbaru">
+                           <div class="row">
+                              <?php foreach($LastUpdateManga as $key => $API_LastUpdateMangaV){ ?>
+                              <?php $slug = $API_LastUpdateMangaV->SlugChp; 
+                                    $Star = $API_LastUpdateMangaV->Star; 
+                                    $Stars = '';
+                                    for($i = 0 ; $i < $Star ;$i++){
+                                       $Stars .= '★';
+                                    }      
+                              ?>
+                                    <div class="col-6 col-sm-6 col-md-3 col-lg-2 mb40 width20">
+                                          <a href="<?php echo site_url('manga-read/'.$slug); ?>">
+                                                <div class="episode-card">
+                                                   <div class="episode-ratio background-cover" style="" >
+                                                   <img  src="<?php echo $API_LastUpdateMangaV->Image ?>" onerror="this.src='<?php echo base_url().'assets/template_2/assets/img/404_card_image_1.jpg'; ?>'" alt="<?php echo $API_LastUpdateMangaV->Title; ?>">
+                                                      <div class="episode-detail px-3 pt-5">
+                                                            <div class="">
+                                                               <h5 class="text-white"><?php echo $API_LastUpdateMangaV->Title; ?></h5>
+                                                               <div class="ratingarea">
+                                                                  <span class="series-rating" style="background-size: 0% 100%"><?php echo $Stars; ?></span>
+                                                                  <i class="score"><?php echo $API_LastUpdateMangaV->Rating; ?></i>
+                                                               </div>
+                                                            </div>
+                                                            <div class="status-type text-white"> <span class="text-h6"></span> <span class="text-h6">TV</span></div>
+                                                      </div>
+                                                      <div class="episode-number manga-number"><?php echo $API_LastUpdateMangaV->Chapter ?></div>
+                                                   </div>
                                                 </div>
-                                                <div class="episode-number"><?php echo $API_LastUpdateAnimeV->Episode ?></div>
-                                            </div>
-                                        </div>
-                                    </a>      
-                                </div>
-                                <?php } ?>
+                                          </a>      
+                                    </div>
+                                 <?php } ?>
+                           </div>
+                           <a class="linkupdate" href="<?php echo site_url('manga-update/'); ?>">Lihat Semua Chapter Manga Terbaru</a>
                         </div>
-                        <a class="linkupdate" href="<?php echo site_url('anime-update/'); ?>">Lihat Semua Episode Anime Terbaru</a>
                      </div>
                   </div>
-               </div>
-            </section>
+               </section>
+               
+            </div>
+            <!-- #endregion Lastupdate Manga-->
             
-         </div>
-         <!-- #endregion LstUpdate Anime -->
-         
-         <!-- #region Recomendation -->
-         <div class="postbody recomended-body">   
-            <section class="purple">
-               <div class="widget-body">
-                  <div class="content">
-                     <div class="post-show chapterbaru">
-                        <div class="row">
-                           <div class="col-sm-6">
-                              <div class="widget-title recomendation-column">
-                                 <h2>Rekomendasi Anime</h2>
+            
+            <!-- #region Recomendation -->
+            <div class="postbody recomended-body">   
+               <section class="purple">
+                  <div class="widget-body">
+                     <div class="content">
+                        <div class="post-show chapterbaru">
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="widget-title recomendation-column">
+                                    <h2>Rekomendasi Anime</h2>
+                                 </div>
+                                    <?php foreach($RecomendationAnime as $key => $API_RecomendationAnimeV){ ?>
+                                       <?php $SlugDetail = $API_RecomendationAnimeV->SlugDetail; 
+                                             $Star = $API_RecomendationAnimeV->Star; 
+                                             $Stars = '';
+                                             for($i = 0 ; $i < $Star ;$i++){
+                                                $Stars .= '★';
+                                             }      
+                                       ?>
+                                       <div class="col-sm-12">
+                                             <div class="media manga-item" style="margin-bottom: 4px;">
+                                                <div class="media-left">
+                                                   <a href="<?php echo base_url().'anime-detail/des/'.$SlugDetail?>" class="thumbnail">
+                                                   <img width="80" src="<?php echo $API_RecomendationAnimeV->Image ?>"  onerror="this.src='<?php echo base_url().'assets/template_2/assets/img/404_card_image_1.jpg'; ?>'" alt="<?php echo $API_RecomendationAnimeV->Title; ?>">
+                                                   </a>
+                                                   <span class="hot">Hot</span>
+                                                </div>
+                                                <div class="media-body">
+                                                   <h3 class="media-heading manga-heading text-truncate">
+                                                      <!-- <i class="fa fa-book"></i> -->
+                                                      <a href="<?php echo base_url().'anime-detail/des/'.$SlugDetail?>" class="chart-title"><?php echo $API_RecomendationAnimeV->Title; ?></a>
+                                                   </h3>
+                                                   <div class="readOnly-228" style="display: inline-block; width: 100px;" title="good">
+                                                      <div class="ratingarea" style="color: #f1e120">
+                                                         <span class="series-rating" style="background-size: 0% 100%; "><?php echo $Stars; ?></span>
+                                                      </div>
+                                                   </div>
+                                                   <!-- <script>$('.readOnly-228').raty({path: "https://mangaid.click/packages/escapeboy/jraty/raty/lib/img", readOnly: true, score: 4.78});</script> -->
+                                                   <div style="color: aliceblue; font-size: 12px;">
+                                                      Genre : <?php echo $API_RecomendationAnimeV->Genre; ?>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                       </div>
+                                 
+                                    <?php } ?>
                               </div>
-                                 <?php foreach($RecomendationAnime as $key => $API_RecomendationAnimeV){ ?>
-                                    <?php $SlugDetail = $API_RecomendationAnimeV->SlugDetail; 
-                                          $Star = $API_RecomendationAnimeV->Star; 
-                                          $Stars = '';
-                                          for($i = 0 ; $i < $Star ;$i++){
-                                             $Stars .= '★';
-                                          }      
-                                    ?>
-                                    <div class="col-sm-12">
+                              <div class="col-sm-6" >
+                                 <div class="widget-title recomendation-column">
+                                    <h2>Rekomendasi Manga</h2>
+                                 </div>
+                                    <?php foreach($RecomendationManga as $key => $API_RecomendationMangaV){ ?>
+                                       <?php $SlugDetail = $API_RecomendationMangaV->SlugDetail; 
+                                             $Star = $API_RecomendationMangaV->Star; 
+                                             $Stars = '';
+                                             for($i = 0 ; $i < $Star ;$i++){
+                                                $Stars .= '★';
+                                             }     
+                                       ?>
+                                       <div class="col-sm-12">
                                           <div class="media manga-item" style="margin-bottom: 4px;">
                                              <div class="media-left">
-                                                <a href="<?php echo base_url().'anime-detail/des/'.$SlugDetail?>" class="thumbnail">
-                                                <img width="80" src="<?php echo $API_RecomendationAnimeV->Image ?>"  onerror="this.src='<?php echo base_url().'assets/template_2/assets/img/404_card_image_1.jpg'; ?>'" alt="<?php echo $API_RecomendationAnimeV->Title; ?>">
+                                                <a href="<?php echo base_url().'manga-detail/des/'.$SlugDetail?>" class="thumbnail">
+                                                <img width="80" src="<?php echo $API_RecomendationMangaV->Image ?>" alt="<?php echo $API_RecomendationMangaV->Title; ?>" onerror="this.src='<?php echo base_url().'assets/template_2/assets/img/404_card_image_1.jpg'; ?>'">
                                                 </a>
                                                 <span class="hot">Hot</span>
                                              </div>
                                              <div class="media-body">
                                                 <h3 class="media-heading manga-heading text-truncate">
                                                    <!-- <i class="fa fa-book"></i> -->
-                                                   <a href="<?php echo base_url().'anime-detail/des/'.$SlugDetail?>" class="chart-title"><?php echo $API_RecomendationAnimeV->Title; ?></a>
+                                                   <a href="<?php echo base_url().'manga-detail/des/'.$SlugDetail?>" class="chart-title"><?php echo $API_RecomendationMangaV->Title; ?></a>
                                                 </h3>
                                                 <div class="readOnly-228" style="display: inline-block; width: 100px;" title="good">
                                                    <div class="ratingarea" style="color: #f1e120">
@@ -286,62 +326,22 @@
                                                 </div>
                                                 <!-- <script>$('.readOnly-228').raty({path: "https://mangaid.click/packages/escapeboy/jraty/raty/lib/img", readOnly: true, score: 4.78});</script> -->
                                                 <div style="color: aliceblue; font-size: 12px;">
-                                                   Genre : <?php echo $API_RecomendationAnimeV->Genre; ?>
+                                                   Genre : <?php echo $API_RecomendationMangaV->Genre; ?>
                                                 </div>
-                                             </div>
-                                          </div>
-                                    </div>
-                              
-                                 <?php } ?>
-                            </div>
-                            <div class="col-sm-6" >
-                              <div class="widget-title recomendation-column">
-                                 <h2>Rekomendasi Manga</h2>
-                              </div>
-                                 <?php foreach($RecomendationManga as $key => $API_RecomendationMangaV){ ?>
-                                    <?php $SlugDetail = $API_RecomendationMangaV->SlugDetail; 
-                                          $Star = $API_RecomendationMangaV->Star; 
-                                          $Stars = '';
-                                          for($i = 0 ; $i < $Star ;$i++){
-                                             $Stars .= '★';
-                                          }     
-                                    ?>
-                                    <div class="col-sm-12">
-                                       <div class="media manga-item" style="margin-bottom: 4px;">
-                                          <div class="media-left">
-                                             <a href="<?php echo base_url().'manga-detail/des/'.$SlugDetail?>" class="thumbnail">
-                                             <img width="80" src="<?php echo $API_RecomendationMangaV->Image ?>" alt="<?php echo $API_RecomendationMangaV->Title; ?>" onerror="this.src='<?php echo base_url().'assets/template_2/assets/img/404_card_image_1.jpg'; ?>'">
-                                             </a>
-                                             <span class="hot">Hot</span>
-                                          </div>
-                                          <div class="media-body">
-                                             <h3 class="media-heading manga-heading text-truncate">
-                                                <!-- <i class="fa fa-book"></i> -->
-                                                <a href="<?php echo base_url().'manga-detail/des/'.$SlugDetail?>" class="chart-title"><?php echo $API_RecomendationMangaV->Title; ?></a>
-                                             </h3>
-                                             <div class="readOnly-228" style="display: inline-block; width: 100px;" title="good">
-                                                <div class="ratingarea" style="color: #f1e120">
-                                                   <span class="series-rating" style="background-size: 0% 100%; "><?php echo $Stars; ?></span>
-                                                </div>
-                                             </div>
-                                             <!-- <script>$('.readOnly-228').raty({path: "https://mangaid.click/packages/escapeboy/jraty/raty/lib/img", readOnly: true, score: 4.78});</script> -->
-                                             <div style="color: aliceblue; font-size: 12px;">
-                                                Genre : <?php echo $API_RecomendationMangaV->Genre; ?>
                                              </div>
                                           </div>
                                        </div>
-                                    </div>
-                                    <?php } ?>
-                            </div>
+                                       <?php } ?>
+                              </div>
+                           </div>
+                           <!-- <a class="linkupdate-pink" href="/anime-terbaru/">Lihat Semua Update Episode Terbaru</a> -->
                         </div>
-                        <!-- <a class="linkupdate-pink" href="/anime-terbaru/">Lihat Semua Update Episode Terbaru</a> -->
                      </div>
                   </div>
-               </div>
-            </section>
-            
-         </div>
-      </div>  
+               </section>
+               
+            </div>
+         </div>  
 
       <div class="rigt-content card-hidden">
          <div id="sidebar">
