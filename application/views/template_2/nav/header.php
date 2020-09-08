@@ -104,9 +104,13 @@
             echo $seo;   
             
         }
-    } ?>
+    } 
+    ?>
+    <?php if(getenv('ADS_ACTIVATED') != TRUE){?>
     <!-- propelers -->
-    <meta name="propeller" content="2228ade9a10121fe734547f1959726d2">
+        <meta name="propeller" content="2228ade9a10121fe734547f1959726d2">
     <!-- Propeler onclick -->
-    <script data-cfasync="false" type="text/javascript" src="<?php echo base_url().'assets/template_2/assets/js/adsnetwork.js'?>"></script>
+        <script data-cfasync="false" type="text/javascript" src="<?php echo base_url().'assets/template_2/assets/js/adsnetwork.js'?>"></script>
+    <?php }?>
+    
 </head>
