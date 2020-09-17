@@ -133,7 +133,7 @@
             <a class="Back-arrow" href="<?php echo site_url(); ?>">
                <div class="nav-prev">
                      <i class="fa fa-home"></i> 
-                     <span> Home</span>
+                     <span> Home </span>
                </div>
             </a>
             <?php } if(!empty($SlugNextChapter)){?>
