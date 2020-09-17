@@ -74,7 +74,7 @@ $route['anime-detail/des/(:any)'] = 'Anime/AnimeDetailController/detailAnime/$1'
 $route['anime-update'] = 'Anime/AnimeUpdateController';
 $route['anime-update/pages/(:any)'] = 'Anime/AnimeUpdateController/Pages/$1';
 //========================khusus untuk backlink lama biar tidak error=========================
-$route['streaming/(:any)'] = 'Anime/AnimeStreamingController/Streaming/$1'; 
+// $route['streaming/(:any)'] = 'Anime/AnimeStreamingController/Streaming/$1'; 
 $route['anime/(:any)'] = 'Anime/AnimeDetailController/detailAnime/$1';
 //========================khusus untuk backlink lama biar tidak error=========================
 
