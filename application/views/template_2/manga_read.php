@@ -130,6 +130,12 @@
                      <span> Previous</span>
                </div>
             </a>
+            <a class="Back-arrow" href="<?php echo site_url(); ?>">
+               <div class="nav-prev">
+                     <i class="fa fa-home"></i> 
+                     <span> Home</span>
+               </div>
+            </a>
             <?php } if(!empty($SlugNextChapter)){?>
             <a class="Back-arrow" href="<?php echo site_url('manga-read/'.$SlugNextChapter); ?>">
                   <div class="nav-next">
