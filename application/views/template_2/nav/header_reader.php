@@ -125,7 +125,7 @@
                     </button>
                 <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuChapter-2" style="width: 100%;">
                 <?php foreach($ChapterList as $ChapterListV){?>
-                    <a class="dropdown-item" href="<?php echo site_url('manga-read/'.$ChapterListV->SlugChp); ?>"><?php echo $ChapterListV->Title?></a>
+                    <a class="dropdown-item" href="<?php echo site_url('manga-read/'.$ChapterListV->SlugChp); ?>"><?php echo substr(str_replace('-',' ',$ChapterListV->Title),0,20).'...'.$ChapterListV->Chapter ?></a>
                   <?php }?>
                 </div>
         </div>

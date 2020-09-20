@@ -34,7 +34,7 @@
          </div>
          <div class="list">
             <div class="list-item">
-               <h2 class="item-title">Anime Terbaru</h2>
+               <h2 class="item-title">Anime Ongoing</h2>
                <a href="<?php echo site_url('anime-search-ong'); ?>">
                   <span class="see-all">Lihat Semua</span>
                </a> 
