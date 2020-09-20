@@ -56,12 +56,31 @@
           </div>
       </div>
       <nav class="navbar mobile-nav navbar-expand-lg d-md-none">
-          <button class=navbar-toggler id=menu-sh>
+         <button class=navbar-toggler id=menu-sh>
               <i class="fas fa-bars"></i>
-          </button>
-          <a href="<?php echo base_url() ?>" class=text-logo style="padding-right: 4%;">
-              <span class="text-h2 font-bold">Nimeindo</span>
-          </a>
+        </button>
+        
+        <form class="the-search form-inline my-2 my-lg-0" method="get" id=searchform action="<?php echo site_url('search/'); ?>" search"">
+            <div class="input-group col-md-4">
+            <input class="form-control mr-sm-2" type=search placeholder="Search.." aria-label=Search name="KeyW">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary btn-search" type="input">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+      
+
+        </form>
+        <a href="<?php echo base_url() ?>" class=text-home-main>
+              <i class="fas fa-home"></i>
+        </a>
+          <!-- <a href="<?php echo base_url() ?>" class=text-logo style="padding-right: 4%;">
+              <span class="text-h2 font-bold">Nimeindos</span>
+          </a> -->
+          <!-- <div class="col-12 d-none d-md-flex flex-row justify-content-end"> -->
+            
+          <!-- </div> -->
           <div class="collapse navbar-collapse" id=navbarNav>
               <ul class=navbar-nav>
                   <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-29 menumob"><a href="<?php echo base_url().''?>">Home</a>
