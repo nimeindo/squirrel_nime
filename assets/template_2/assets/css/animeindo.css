@@ -96,6 +96,10 @@
     line-height: 1;
     border-radius: .25rem;
 }
+.the-search input:focus{
+    outline: 2px solid #fff !important;  
+    background: #fff;   /* oranges! yey */
+  }
 .the-search {
     max-width: 80% !important;
     width: inherit;
