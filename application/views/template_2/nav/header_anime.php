@@ -72,8 +72,21 @@
           <button class=navbar-toggler id=menu-sh>
               <i class="fas fa-bars"></i>
           </button>
-          <a href="<?php echo base_url() ?>" class=text-logo style="padding-right: 4%;">
+          <!-- <a href="<?php echo base_url() ?>" class=text-logo style="padding-right: 4%;">
               <span class="text-h2 font-bold">Nimeindo</span>
+          </a> -->
+          <form class="the-search form-inline my-2 my-lg-0" method=get id=searchform action="<?php echo site_url('anime-search/'); ?>"search"">
+            <div class="input-group col-md-4">
+            <input class="form-control mr-sm-2" type=search placeholder="Search Anime" aria-label=Search name="KeyW">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary btn-search" type="input">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+          </div>
+          </form>
+          <a href="<?php echo base_url() ?>" class=text-home-main>
+              <i class="fas fa-home"></i>
           </a>
           <div class="collapse navbar-collapse" id=navbarNav>
               <ul class=navbar-nav>

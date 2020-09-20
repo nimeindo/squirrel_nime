@@ -88,8 +88,21 @@
 .header-nav .main-nav li a {
     color: #fff;
 }
+.text-home-main{
+    border: none;
+    padding: 0;
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1;
+    border-radius: .25rem;
+}
 .the-search {
-    max-width: 100%;
+    max-width: 80% !important;
+    width: inherit;
+}
+.btn-search{
+    background-color: #202125 !important;
+    border-color: #202125 !important;
 }
 .the-search input {
     background: #202125;
