@@ -36,7 +36,7 @@
          <!-- New Manga -->
          <div class="list">
             <div class="list-item">
-               <h2 class="item-title">Manga Terbaru</h2>
+               <h2 class="item-title">Manga Ongoing</h2>
                <a href="<?php echo site_url('manga-search-ong'); ?>">
                   <span class="see-all">Lihat Semua</span>
                </a>
