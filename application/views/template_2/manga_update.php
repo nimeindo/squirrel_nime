@@ -52,6 +52,9 @@
                                                     <span class="series-rating" style="background-size: 0% 100%"><?php echo $Stars; ?></span>
                                                     <i class="score"><?php echo "Chp ".$API_LastUpdateMangaV->Chapter; ?></i>
                                                 </div>
+                                                <div class="">
+                                                    <span class="text-h6 text-white"><?php echo $API_LastUpdateMangaV->PublishDateAgo; ?></span>
+                                                </div>
                                                 </div>
                                                 <div class="status-type text-white"> 
                                                     <span class="text-h6">

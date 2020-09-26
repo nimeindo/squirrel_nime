@@ -98,6 +98,9 @@
                                                             <i class="score"><?php echo $API_LastUpdateAnimeV->Rating; ?></i>
                                                         </div>
                                                     </div>
+                                                    <div class="">
+                                                    <span class="text-h6 text-white"><?php echo $API_LastUpdateAnimeV->PublishDateAgo; ?></span>
+                                                    </div>
                                                     <div class="status-type text-white"> <span class="text-h6"></span> <span class="text-h6">TV</span></div>
                                                 </div>
                                                 <div class="episode-number"><?php echo $API_LastUpdateAnimeV->Episode ?></div>
@@ -228,7 +231,7 @@
                                                                   <i class="score"><?php echo $API_LastUpdateMangaV->Rating; ?></i>
                                                                </div>
                                                             </div>
-                                                            <div class="status-type text-white"> <span class="text-h6"></span> <span class="text-h6">TV</span></div>
+                                                            <div class="status-type text-white"> <span class="text-h6"></span> <span class="text-h6"><?php echo $API_LastUpdateMangaV->PublishDateAgo ?></span></div>
                                                       </div>
                                                       <div class="episode-number manga-number"><?php echo $API_LastUpdateMangaV->Chapter ?></div>
                                                    </div>
