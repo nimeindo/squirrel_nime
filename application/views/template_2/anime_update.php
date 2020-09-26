@@ -55,6 +55,9 @@
                                                     <span class="series-rating" style="background-size: 0% 100%"><?php echo $Stars; ?></span>
                                                     <i class="score"><?php echo "Eps ".$API_LastUpdateAnimeV->Episode; ?></i>
                                                 </div>
+                                                <div class="">
+                                                    <span class="text-h6 text-white"><?php echo $API_LastUpdateAnimeV->PublishDateAgo; ?></span>
+                                                </div>
                                                 </div>
                                                 <div class="status-type text-white"> 
                                                     <span class="text-h6">
