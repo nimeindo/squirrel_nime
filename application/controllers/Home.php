@@ -28,7 +28,7 @@ class Home extends CI_Controller {
 		$RecomendationAnime = Home::RecomendationAnime(5);
 		$TopManga = Home::TopManga(5);
 		$TopAnime = Home::TopAnime(5);
-		$SliderAnime = Home::SliderAnime(5);
+		$SliderAnime = Home::SliderAnime(8);
 		$SliderManga = Home::SliderManga(5);
 		$DataMetaHeader = Home::DataMetaHeader();
 		
