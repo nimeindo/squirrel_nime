@@ -54,7 +54,7 @@ $route['404_override'] = 'Controller404/index';
 $route['translate_uri_dashes'] = FALSE;
 
 
-
+$route['sendToken'] = 'PushNotificationController/sendToken';
 $route['search'] = 'SearchHomeController/search';
 $route['search/pages/(:any)-manga-(:any)-anime-(:any)'] = 'SearchHomeController/pages/$1/$2/$3';
 $route['anime'] = 'Anime/AnimeController';

@@ -99,7 +99,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="">
-                                                    <span class="text-h6 text-white"><?php echo $API_LastUpdateAnimeV->PublishDateAgo; ?></span>
+                                                      <span class="text-h6 text-white"><?php echo $API_LastUpdateAnimeV->PublishDateAgo; ?></span>
                                                     </div>
                                                     <div class="status-type text-white"> <span class="text-h6"></span> <span class="text-h6">TV</span></div>
                                                 </div>

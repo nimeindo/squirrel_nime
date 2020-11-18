@@ -62,6 +62,34 @@
       
       })
    </script>
-    
+   <script type="text/javascript">
+      if('serviceWorker' in navigator){
+         window.addEventListener('load', () =>{
+            navigator.serviceWorker
+            .register("firebase-messaging-sw.js")
+            .then(reg => console.log('Service Worker :registered'))
+            .catch(err => console.log('Service worker error :'+err))
+         });
+      }
+   </script>
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-messaging.js"></script>
+   <script src=<?php echo base_url().'assets/js/firebase-push-config.js'?> type='text/javascript'></script>
+   <script type="text/javascript">
+      main().setup({
+         token: "<?php echo $this->security->get_csrf_hash(); ?>"
+      })
+    </script>
+    <script>
+      $(document).ready(function(){
+        "use strict";
+        $(".pus-button .btn").click(function(){
+        $('.popup-subscribe').slideUp('fast');
+        });
+      });
+    </script>
+    <!-- Firebase Push -->
 </body>
 </html>

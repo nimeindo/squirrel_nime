@@ -1,0 +1,110 @@
+
+  .popup-subscribe{
+      position:fixed; 
+      z-index:100; 
+      background-color:#FFF; 
+      top:inherit; 
+      bottom: 50px; 
+      width: 100%; 
+      /* display:none; */
+    box-shadow:0 0 10px #333; 
+    -moz-box-shadow:0 0 10px #333; 
+    -webkit-box-shadow:0 0 10px #333;
+    }
+    .popup-subscribe > span{width:360px;}
+    .pus-button > ul {
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+    .pus-box{padding:20px;}
+    .pus-box > span{
+        display:block; 
+        position:relative;
+    }
+    .pus-icon{
+        position:absolute; 
+        top:5px; 
+        left:0;
+    }
+    .pus-icon img{
+        margin-top: 14px;
+        margin-left: -8px;
+        width:50px; 
+        height:50px;
+    }
+    .pus-info{
+        margin-top: -12px;
+        min-height:50px; 
+        margin-left:50px;
+    }
+    .pus-info > span{margin-left:10px;}
+    .pus-wording{line-height:22px;font-family: 'Roboto', serif;font-size: 14px;}
+    .pus-button > ul > li{float:left; margin:10px 5px 13 0;}
+    .pus-button .btn{
+        font-size:12px; 
+        width:80px; 
+        text-align:center;
+        
+    }
+    .pus-btn-no{
+        color:#212121 !important;
+    }
+    .pus-btn-yes{
+        background-color:#E0E0E0; 
+        color:#212121 !important;
+    }
+    .pus-button .btn:hover{
+        background-color:#212121 !important; 
+        color:#FFF !important;
+    }
+  
+    @media screen and (min-width:1024px){
+        .popup-subscribe{
+            width: 320px;
+            position:fixed; 
+            z-index:100; 
+            background-color:#FFF; 
+            top:0; right:0%; 
+            /* display:none; */
+            box-shadow:0 0 10px #333; 
+            -moz-box-shadow:0 0 10px #333; 
+            -webkit-box-shadow:0 0 10px #333;
+            bottom: inherit;
+        }
+    }
+    /* / / / / / / / / */
+    /* ====================== Batas Resolusi =============================== */
+        @media (min-width: 1269px) {
+
+        }
+        /* ##Device = Laptops, Desktops ##Screen = B/w 1025px to 1280px */
+        @media (min-width: 1028px) and (max-width: 1259px) {
+
+        }
+
+        /* ##Device = Tablets, Ipads (portrait) ##Screen = B/w 768px to 1024px */
+        @media (min-width: 768px) and (max-width: 1024px) {
+
+        }
+        /* ##Device = Tablets, Ipads (landscape) ##Screen = B/w 768px to 1024px */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+        }
+    /* ##Device = Low Resolution Tablets, Mobiles (Landscape) ##Screen = B/w 481px to 767px */
+        @media (min-width: 481px) and (max-width: 767px) {
+
+        }
+        /* ##Device = Most of the Smartphones Mobiles 600px*/
+        @media (max-width: 600px) {
+
+        }
+        @media (max-width: 500px) {
+
+        }
+        @media (max-width: 400px) {
+
+        }
+        @media (max-width: 390px) {
+            
+        }
+    
