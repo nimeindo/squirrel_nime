@@ -10,3 +10,6 @@ $config['api_url_manga'] = getenv('API_URL_MANGA');
 $config['api_port_manga'] = getenv('API_PORT_MANGA');
 $config['api_key_manga'] = getenv('API_KEY_MANGA');
 $config['api_inisial_manga'] = getenv('API_INISIAL_NAME_MANGA');
+
+$config['push_notif_url_firebase'] = getenv('URL_FIREBASE_NODE');
+$config['auth_firebase'] = getenv('AUTH_FIREBASE');

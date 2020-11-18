@@ -2440,7 +2440,7 @@ ul.mangagenre{
         display: inline-block;
    }
 }
-/* ##Device = Most of the Smartphones Mobiles (Portrait) ##Screen = B/w 320px to 479px */
+/* ##Device = Most of the Smartphones Mobiles 600px*/
 @media (max-width: 600px) {
    /* .lorem-footer{
         display: none;

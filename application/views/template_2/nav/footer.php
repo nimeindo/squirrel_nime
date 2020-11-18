@@ -1,3 +1,4 @@
+
     <footer id="footer" >
       <div class="footermenu">
          <div class="menu-footer-container">
@@ -60,8 +61,36 @@
       
       })
    </script>
+   
+   <script type="text/javascript">
+      if('serviceWorker' in navigator){
+         window.addEventListener('load', () =>{
+            navigator.serviceWorker
+            .register("firebase-messaging-sw.js")
+            .then(reg => console.log('Service Worker :registered'))
+            .catch(err => console.log('Service worker error :'+err))
+         });
+      }
+   </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.0/firebase-messaging.js"></script>
+    <script src=<?php echo base_url().'assets/js/firebase-push-config.js'?> type='text/javascript'></script>
+    <script type="text/javascript">
+      main().setup({
+          token: "<?php echo $this->security->get_csrf_hash(); ?>"
+      })
+    </script>
+    <script>
+      $(document).ready(function(){
+        "use strict";
+        $(".pus-button .btn").click(function(){
+        $('.popup-subscribe').slideUp('fast');
+        });
+      });
+    </script>
+    <!-- Firebase Push -->
 </body>
 </html>

@@ -13,11 +13,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="<?php echo $this->security->get_csrf_hash(); ?>">
+
     <meta name="keywords" content="Nimeindo, Anime Indo, Nonton Anime, Nimeindo, Samehdaku.vip">
     <meta name="trending_keywords" content="<?php echo $TrendingKeyword ?>">
     <meta name="tags_keywords" content="<?php echo $TagsKeyword ?>">
     <?php 
-        
         if(empty($DataMetaHeader['Description'])){
             $Description = "NimeIndo adalah website dimana kalian bisa nonton anime subtitle indonesia terlengkap dan terupdate dengan koleksi lebih dari 30.000 judul dan 40.000 episode anime dari berbagai genre.";
             $Title = 'Nimeindo | Nonton Streaming Anime Subtitle Indonesia';
@@ -65,6 +66,7 @@
     
 
     <!-- CSS - Fontawesome -->
+    <link rel="stylesheet" href=<?php echo base_url()."assets/css/push-notif.css"?> >
     <link rel="stylesheet" href=<?php echo base_url()."assets/template_2/assets/css/front.style.css"?> >
     <link rel="stylesheet" href=<?php echo base_url()."assets/template_2/assets/css/owl.carousel.min.css"?> >
     <link rel="stylesheet" href=<?php echo base_url()."assets/template_2/assets/css/owl.theme.default.min.css"?> >
@@ -114,3 +116,5 @@
     <?php }?>
     
 </head>
+<input id='baseUrl' type="hidden" name='baseUrl' value="<?php echo base_url()?>">
+<div id="firebase-popup"></div>
