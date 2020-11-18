@@ -16,7 +16,7 @@ var main = function() {
     return {
         setup: function(params) {
             laravelToken = params.token;
-            urlSendToken = baseUrl+'sendToken';
+            urlSendToken = 'https://www.nimeindo.tv/sendToken';
         }
     }
 }
@@ -82,7 +82,7 @@ function showPopup(){
         <div class="pus-box">
           <span>
             <div class="pus-icon">
-              <img itemprop="image" alt="img_title" src=`+baseUrl+`assets/img/icon_notification.png /></div>
+              <img itemprop="image" alt="img_title" src=https://www.nimeindo.tv/assets/img/icon_notification.png /></div>
             <div class="pus-info content_center">
               <span>
                 <div class="pus-wording">Daftarkan saya agar mendapatkan info terbaru dari NIMEINDO.TV</div>
