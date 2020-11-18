@@ -41,6 +41,7 @@
     .pus-wording{line-height:22px;font-family: 'Roboto', serif;font-size: 14px;}
     .pus-button > ul > li{float:left; margin:10px 5px 13 0;}
     .pus-button .btn{
+        margin: 3px;
         font-size:12px; 
         width:80px; 
         text-align:center;
@@ -48,13 +49,15 @@
     }
     .pus-btn-no{
         color:#212121 !important;
+        box-shadow: 0 2px 20px 0 rgba(0,0,0,.76);
     }
     .pus-btn-yes{
-        background-color:#E0E0E0; 
-        color:#212121 !important;
+        background-color:#562be6; 
+        color:#f5f2f2 !important;
+        box-shadow: 0 2px 20px 0 rgba(0,0,0,.76);
     }
     .pus-button .btn:hover{
-        background-color:#212121 !important; 
+        background-color:#b54bf7 !important; 
         color:#FFF !important;
     }
   
