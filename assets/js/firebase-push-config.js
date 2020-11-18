@@ -7,7 +7,7 @@ var permission = Notification.permission;
 var laravelToken;
 var urlSendToken;
 var baseUrl = $('#baseUrl').val()
-
+console.log(baseUrl)
 
 console.log('permission: ', permission);
 checkPopupStatus();
