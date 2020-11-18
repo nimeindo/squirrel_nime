@@ -7,7 +7,6 @@ var permission = Notification.permission;
 var laravelToken;
 var urlSendToken;
 var baseUrl = $('#baseUrl').val()
-console.log(baseUrl)
 
 console.log('permission: ', permission);
 checkPopupStatus();
@@ -16,7 +15,7 @@ var main = function() {
     return {
         setup: function(params) {
             laravelToken = params.token;
-            urlSendToken = 'https://www.nimeindo.tv/sendToken';
+            urlSendToken = baseUrl+'sendToken';
         }
     }
 }
@@ -82,7 +81,7 @@ function showPopup(){
         <div class="pus-box">
           <span>
             <div class="pus-icon">
-              <img itemprop="image" alt="img_title" src=https://www.nimeindo.tv/assets/img/icon_notification.png /></div>
+              <img itemprop="image" alt="img_title" src=`+baseUrl+`assets/img/icon_notification.png /></div>
             <div class="pus-info content_center">
               <span>
                 <div class="pus-wording">Daftarkan saya agar mendapatkan info terbaru dari NIMEINDO.TV</div>
