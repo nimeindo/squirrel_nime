@@ -70,7 +70,7 @@
                                 <?php foreach($API_Streaming->API_TheMovieRs->Body->StreamAnime as $StreamAnime){ ?>
                                     <!-- #====================== ListServer ========================= -->
                                     <?php foreach($StreamAnime->ListServer as $ListServer){ ?>
-                                            <?php if($i < 4) {?>
+                                            <?php if($i < 8) {?>
                                                 <div class="col-4 col-lg text-center px-0" onclick="serverStreamPlay('<?php echo $ListServer->IframeSrc ?>','<?php echo 'player-option-'.$i;?>')">
                                                     <div id="player-option-<?php echo $i;?>" class="the-button sunset_player_option" data-post="101048" data-nume="<?php echo $i ?>">
                                                         <div class="">Server <?php echo $i += 1 ?></div>
