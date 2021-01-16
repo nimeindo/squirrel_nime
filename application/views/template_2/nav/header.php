@@ -26,7 +26,7 @@
             $Url = base_url();
         }else{
             $Description = $DataMetaHeader['Description'];
-			$Title = $DataMetaHeader['Title'];
+			$Title = $DataMetaHeader['Image'];
             $Image = $DataMetaHeader['Image'];
             $Url = $DataMetaHeader['Url'];
         }
