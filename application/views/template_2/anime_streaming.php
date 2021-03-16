@@ -93,7 +93,7 @@
                                             </div>
                                             <div id="player_embed">
                                                 <div class="pframe" id="pframe">
-                                                    <?php $ServerLocal = isset($serverData[0]) ? $serverData[0] : $serverData[2]; 
+                                                    <?php $ServerLocal = isset($serverData[1]) ? $serverData[1] : $serverData[2]; 
                                                           $serverSet = !empty($ServerLocal) ? $ServerLocal : "";
                                                     ?>
                                                     <iframe id="videoPlay" class="playeriframe" src="<?php echo $serverSet; ?>" frameborder="0" scrolling="no" autoplay="false" allow=" encrypted-media" allowfullscreen="">
